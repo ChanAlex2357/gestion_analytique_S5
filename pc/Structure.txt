@@ -1,0 +1,54 @@
+Sub Create_Tables()
+
+DoCmd.RunSQL "CREATE TABLE unit_oeuvre(" & _
+   "id_unit_oeuvre DOUBLE," & _
+   "name VARCHAR(50) NOT NULL," & _
+   "PRIMARY KEY(id_unit_oeuvre)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Nature(" & _
+   "id_nature INT," & _
+   "name VARCHAR(50) NOT NULL," & _
+   "PRIMARY KEY(id_nature)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Rubrique(" & _
+   "id_rubrique INT," & _
+   "Name VARCHAR(50)," & _
+   "id_unit_oeuvre INT," & _
+   "id_nature INT," & _
+   "PRIMARY KEY(id_rubrique)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE CoutCentre(" & _
+   "id_centre INT," & _
+   "total_cout_fixe DECIMAL(15,2) NOT NULL," & _
+   "total_cout_variable DECIMAL(15,2)," & _
+   "total_cout_centre DECIMAL(15,2)," & _
+   "PRIMARY KEY(id_centre)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Centre(" & _
+   "id_centre INT," & _
+   "id_type_centre INT NOT NULL," & _
+   "name VARCHAR(50) NOT NULL," & _
+   "PRIMARY KEY(id_centre)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Charge_finale(" & _
+   "id_charge_finale INT," & _
+   "id_rubrique INT," & _
+   "total_montant DECIMAL(15,2)," & _
+   "PRIMARY KEY(id_charge_finale)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Detail_charge(" & _
+   "id_charge_detail INT," & _
+   "id_rubrique INT," & _
+   "id_centre INT," & _
+   "id_nature INT," & _
+   "montant DECIMAL(15,2)," & _
+   "PRIMARY KEY(id_charge_detail)" & _
+");"   
+
+End Sub
