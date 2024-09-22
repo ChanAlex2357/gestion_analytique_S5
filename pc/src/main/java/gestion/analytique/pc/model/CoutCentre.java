@@ -5,6 +5,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,15 +24,17 @@ public class CoutCentre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_centre;
 
-    private double total_cout_fixe;
-    private double total_cout_variable;
+    @ManyToOne
+    @JoinColumn(name = "id_nature", nullable = false) 
+    private Nature nature; 
+
+    @Column(name = "total_cout_centre")
     private double total_cout_centre;
 
     // Constructor
     @Builder
-    public CoutCentre(double total_cout_fixe, double total_cout_variable, double total_cout_centre) {
-        this.total_cout_fixe = total_cout_fixe;
-        this.total_cout_variable = total_cout_variable;
+    public CoutCentre(Nature nature, double total_cout_centre) {
+        this.nature = nature;
         this.total_cout_centre = total_cout_centre;
     }
 }

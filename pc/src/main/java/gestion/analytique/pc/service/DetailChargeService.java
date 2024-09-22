@@ -33,4 +33,8 @@ public class DetailChargeService {
         repository.deleteById(id);
     }
 
+    public Double sumMontantByRubriqueId(int idRubrique) {
+        return repository.sumMontantByRubriqueId(idRubrique);
+    }    
+
 }

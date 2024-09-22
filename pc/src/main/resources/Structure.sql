@@ -27,10 +27,10 @@ CREATE TABLE Rubrique(
 
 CREATE TABLE CoutCentre(
    id_centre SERIAL,
-   total_cout_fixe NUMERIC(15,2) ,
-   total_cout_variable NUMERIC(15,2) ,
+   id_nature INTEGER,
    total_cout_centre NUMERIC(15,2)  ,
-   PRIMARY KEY(id_centre)
+   PRIMARY KEY(id_centre),
+   FOREIGN KEY (id_nature) REFERENCES nature(id_nature)
 );
 
 CREATE TABLE type_centre(

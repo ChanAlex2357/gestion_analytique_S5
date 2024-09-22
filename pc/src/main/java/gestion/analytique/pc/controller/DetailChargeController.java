@@ -4,13 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import gestion.analytique.pc.model.DetailCharge;
+import gestion.analytique.pc.model.Nature;
 import gestion.analytique.pc.model.Rubrique;
 import gestion.analytique.pc.model.Centre;
-import gestion.analytique.pc.model.ChargeFinale; // Assurez-vous d'importer la classe ChargeFinale
+import gestion.analytique.pc.model.ChargeFinale;
+import gestion.analytique.pc.model.CoutCentre;
 import gestion.analytique.pc.service.DetailChargeService;
 import gestion.analytique.pc.service.RubriqueService;
 import gestion.analytique.pc.service.CentreService;
-import gestion.analytique.pc.service.ChargeFinaleService; // Importez également ChargeFinaleService
+import gestion.analytique.pc.service.ChargeFinaleService;
+import gestion.analytique.pc.service.CoutCentreService;
+import gestion.analytique.pc.service.NatureService;
 
 import java.util.List;
 
@@ -20,17 +24,21 @@ public class DetailChargeController {
     private final DetailChargeService detailChargeService;
     private final RubriqueService rubriqueService;
     private final CentreService centreService;
-    private final ChargeFinaleService chargeFinaleService; 
+    private final ChargeFinaleService chargeFinaleService;
+    private final CoutCentreService coutCentreService;
+    private final NatureService natureService;
 
     @Autowired
     public DetailChargeController(DetailChargeService detailChargeService,
             RubriqueService rubriqueService,
             CentreService centreService,
-            ChargeFinaleService chargeFinaleService) { 
+            ChargeFinaleService chargeFinaleService, CoutCentreService CoutCentreService, NatureService natureService) {
         this.detailChargeService = detailChargeService;
         this.rubriqueService = rubriqueService;
         this.centreService = centreService;
         this.chargeFinaleService = chargeFinaleService;
+        this.coutCentreService = CoutCentreService;
+        this.natureService = natureService;
     }
 
     @GetMapping
@@ -64,26 +72,34 @@ public class DetailChargeController {
 
             Rubrique rubrique = rubriqueService.getById(idRubrique)
                     .orElseThrow(() -> new RuntimeException("Rubrique not found"));
-            Centre centre = centreService.getById(idCentre).orElseThrow(() -> new RuntimeException("Centre not found"));
+            Centre centre = centreService.getById(idCentre)
+                    .orElseThrow(() -> new RuntimeException("Centre not found"));
 
-            // recuperaton of the data to insert the chargefinal
-            sum_montant += montant;
-            idrubrique_used = rubrique;
-
-            // Declaration of the detailcharge that will be insert
+            // Déclaration du détail de la charge qui sera inséré
             DetailCharge charge = new DetailCharge();
             charge.setRubrique(rubrique);
             charge.setCentre(centre);
             charge.setMontant(montant);
 
-            // insertion
+            // Insertion dans la table coutcentre
+            Nature nature = natureService.getById(rubrique.getId_rubrique())
+                    .orElseThrow(() -> new RuntimeException("Nature not found"));
+            CoutCentre coutCentre = new CoutCentre(nature, montant);
+            coutCentreService.save(coutCentre);
+
+            // Insertion du détail de charge
             detailChargeService.save(charge);
+
+            // Calcul de la somme totale des montants
+            sum_montant = detailChargeService.sumMontantByRubriqueId(rubrique.getId_rubrique());
+            idrubrique_used = rubrique;
         }
 
-        // Insertion of the chargefinale
+        // Insertion dans la table chargefinale
         ChargeFinale chargeFinale = new ChargeFinale(idrubrique_used, sum_montant);
         chargeFinaleService.save(chargeFinale);
 
         return ResponseEntity.ok().build();
     }
+
 }
