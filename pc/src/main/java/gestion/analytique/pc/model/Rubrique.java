@@ -1,11 +1,13 @@
 package gestion.analytique.pc.model;
 
-//All the importation 
+// All the imports
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,22 +17,28 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "rubrique") 
+@Table(name = "rubrique")
 public class Rubrique {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_rubique;
+    private int id_rubrique;
 
-    private String name ;
-    private int id_unit_oeuvre ; 
-    private int id_nature;
+    private String name; 
 
-    //Construtor : 
-    @Builder 
-    public Rubrique(String name,int id_unit_oeuvre,int id_nature){
+    @ManyToOne
+    @JoinColumn(name = "id_unit_oeuvre")
+    private UnitOeuvre unitOeuvre; 
+
+    @ManyToOne
+    @JoinColumn(name = "id_nature")
+    private Nature nature; 
+
+    // Constructor with Builder
+    @Builder
+    public Rubrique(String name, UnitOeuvre unitOeuvre, Nature nature) {
         this.name = name;
-        this.id_unit_oeuvre = id_unit_oeuvre;
-        this.id_nature = id_nature;
+        this.unitOeuvre = unitOeuvre;
+        this.nature = nature;
     }
 }

@@ -4,12 +4,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import gestion.analytique.pc.model.DetailCharge;
 import gestion.analytique.pc.repository.DetailChargeRepository;
+import gestion.analytique.pc.repository.ChargeFinaleRepository;
+import gestion.analytique.pc.repository.CoutCentreRepository;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DetailChargeService {
     private final DetailChargeRepository repository;
+    private ChargeFinaleRepository chargeFinaleRepository;
+    private CoutCentreRepository CoutCentreRepository;
+
 
     @Autowired
     public DetailChargeService(DetailChargeRepository repository) {
@@ -31,4 +36,5 @@ public class DetailChargeService {
     public void delete(int id) {
         repository.deleteById(id);
     }
+
 }
