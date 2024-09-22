@@ -2,5 +2,5 @@ spring.application.name=pc
 
 # Databases configuration
 spring.datasource.url=jdbc:postgresql://localhost:5432/bussiness_management
-spring.datasource.username=postgres
-spring.datasource.password=Soljah
+spring.datasource.username=Nom_database
+spring.datasource.password=ur_password

@@ -1,5 +1,5 @@
 CREATE TABLE unit_oeuvre(
-   id_unit_oeuvre DOUBLE PRECISION,
+   id_unit_oeuvre SERIAL,
    name VARCHAR(50)  NOT NULL,
    PRIMARY KEY(id_unit_oeuvre)
 );
@@ -20,7 +20,7 @@ CREATE TABLE Rubrique(
 
 CREATE TABLE CoutCentre(
    id_centre INTEGER,
-   total_cout_fixe NUMERIC(15,2)   NOT NULL,
+   total_cout_fixe NUMERIC(15,2) NOT NULL,
    total_cout_variable NUMERIC(15,2)  ,
    total_cout_centre NUMERIC(15,2)  ,
    PRIMARY KEY(id_centre)

@@ -1,5 +1,4 @@
 
-
 CREATE TABLE charge_details (
     id_chargedetail INT,
     id_rubrique INT REFERENCES rubriques(id_rubrique),
