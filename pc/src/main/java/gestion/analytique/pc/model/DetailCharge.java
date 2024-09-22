@@ -31,17 +31,12 @@ public class DetailCharge {
     @JoinColumn(name = "id_centre")
     private Centre centre;
 
-    @ManyToOne
-    @JoinColumn(name = "id_nature")
-    private Nature nature;
-
     private double montant;
 
     @Builder
-    public DetailCharge(Rubrique rubrique, Centre centre, Nature nature, double montant) {
+    public DetailCharge(Rubrique rubrique, Centre centre, double montant) {
         this.rubrique = rubrique;
         this.centre = centre;
-        this.nature = nature;
         this.montant = montant;
     }
 }

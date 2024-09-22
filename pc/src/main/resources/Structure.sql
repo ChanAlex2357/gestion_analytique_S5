@@ -58,7 +58,6 @@ CREATE TABLE Detail_charge(
    id_charge_detail SERIAL,
    id_rubrique INTEGER,
    id_centre INTEGER,
-   id_nature INTEGER,
    montant NUMERIC(15,2)  ,
    PRIMARY KEY(id_charge_detail),
    FOREIGN KEY (id_rubrique) REFERENCES rubrique(id_rubrique),
