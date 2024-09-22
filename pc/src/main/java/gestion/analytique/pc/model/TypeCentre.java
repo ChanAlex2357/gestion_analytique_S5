@@ -5,8 +5,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,22 +14,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "centre")
-public class Centre {
+@Table(name = "type_centre")
+public class TypeCentre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_centre;
-
-    @ManyToOne
-    @JoinColumn(name = "id_type_centre", nullable = false)
-    private TypeCentre typeCentre;
+    private int id_type_centre;
 
     private String name;
 
     @Builder
-    public Centre(TypeCentre typeCentre, String name) {
-        this.typeCentre = typeCentre;
+    public TypeCentre(String name) {
         this.name = name;
     }
 }

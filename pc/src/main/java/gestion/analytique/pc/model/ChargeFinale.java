@@ -16,22 +16,22 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "centre")
-public class Centre {
+@Table(name = "charge_finale")
+public class ChargeFinale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_centre;
+    private int id_charge_finale;
 
     @ManyToOne
-    @JoinColumn(name = "id_type_centre", nullable = false)
-    private TypeCentre typeCentre;
+    @JoinColumn(name = "id_rubrique")
+    private Rubrique rubrique;
 
-    private String name;
+    private double total_montant;
 
     @Builder
-    public Centre(TypeCentre typeCentre, String name) {
-        this.typeCentre = typeCentre;
-        this.name = name;
+    public ChargeFinale(Rubrique rubrique, double total_montant) {
+        this.rubrique = rubrique;
+        this.total_montant = total_montant;
     }
 }
