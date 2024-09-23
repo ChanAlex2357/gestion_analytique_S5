@@ -48,4 +48,5 @@ public class CentreProxy {
         log.debug("Create Centre call "+ response.getStatusCode().toString());
         return response.getBody();
     }
+    
 }
