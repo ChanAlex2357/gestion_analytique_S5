@@ -59,25 +59,87 @@
 
 - [ ] Back
   - [ ] Class utilitaire Exercice( date_debut , date_fin)
+  - [ ] Class ViewCoutCentre()
+    - [ ] Attributs
+      - [ ] Centre
+      - [ ] NatureCharge
+      - [ ] Montant
+
   - [ ] Class View CoutCentre()
     - [ ] Attributs
       - [ ] Centre
-      - [ ] TypeCharge
+      - [ ] <Nature,Montant> , Montant par nature de charge
       - [ ] Exercice
-      - [ ] Montant
+      - [ ] coutTotal
+      - [ ] coutDirectTotal
+    - [ ] setCoutDirectTotal
+    -> Somme de chaque montant de chaque nature
+
   - [ ] Class AdminCoutCentre ( Exercice )
     -> Recupere la liste des details charges dans l'exercice
     -> Grouper par idCentre et le type charge
-    -> Sommer les montants de chaque groupe
+    -> Sommer les montants de chaque groupe , on obtient le montant par nature de chaque centre pour une ligne de donnee
+    -> Instancier ViewCoutCentre
+    -> Etablir la liste des CoutCentre en mettant la somme de chaque nature dans la map <Nature,Montant>
+    -> Une fois la liste CoutCentre[] etablie , separer les Operationnelles et structurelles
 
     - [ ] Attributs
       - [ ] Exercice
       - [ ] CoutCentre[]
+      - [ ] SommeOperationnelle
+      - [ ] SommeStructurelle
+      - [ ] SommeCoutTotal
+
     - [ ] Fonctions - Faire les calculs a partir de la liste des couts centres
+      - [ ] getCentreOperationnelle()
+
       - [ ] getCoutDirectTotal( Centre )
-        - [ ] getSommeCoutFixe( Centre )
-        - [ ] getSommeCoutVariable( Centre )
-      - [ ] getSommeOperationnelle( )
+      -> return CoutCentre.getCoutDirectTotal tels que CoutCentre.Centre == Centre
+
+      - [ ] getCoutCentre(Centre)
+      -> return CoutCentre tels que CoutCentre.Centre == Cnetre
+
+      - [ ] getSommeOperationnelle( ) -> Si l'attribut SommeOperationnelle n'est pas on retourne directement
         -> Somme des coup direct de tous les centres de type operationnelle
-      - [ ] getSommeStructurelle()
-        -> Somme des coup direct de tous les centres de type Structurelle
+        -> Stocker le resultat dans SommeOperationnelle
+
+      - [ ] getSommeStructurelle() -> Si l'attribut SommeStucturelle n'est pas on retourne directement
+        -> Somme des coup direct de tous les centres de type Stucturelle
+        -> Stocker le resultat dans SommeStucturelle
+
+      - [ ] getClesCentreOperationnelle(Centre[])
+      ->  pour chaque centre de centre => getClesCentreOperationnelle(Centre)
+
+      - [ ] getClesCentreOperationnelle(Centre)
+      -> Cles = getCoutDirectTotal(Centre) / getSommeOperationnelle()
+      -> La cle de repartition du structurelle pour le centre operationnelle
+
+      - [ ] getCoutTotalCentreOperationnelle(Centre)
+      -> coutcentre = getCoutCentre(Centre)
+      ->  return coutCentre.getCoutTotal Si la valeur est != 0
+      -> Sinon coutTotal = getCoutDirectTotal(Centre) + ( getClesCentreOperationnelle(Centre) * getSommeStructurelle() )
+      -> coucentre.setCoutTotal(coutTotal)
+
+      - [ ] getSommeCoutTotal()
+      -> Si SommeCoutTotal return it
+      -> Pour chaque centre de getCentreOperationnelle()
+      -> getCoutTotalCentreOperationnelle(centre)
+      -> setSommeCoutTotal
+
+  - [ ] Class AdminCharge (Exercice)
+  -> getCharges(Exercice) -> Mettre la liste dans l'attribut
+
+    - [ ] Attribut
+      - [ ] Charges []
+    - [ ] Fonctions
+      - [ ] getCharges( Exercice )
+      - [ ] getCharges()
+      -> Recuperer les charges dans l'intervalle de l'exercice
+  - [ ] Class Compta( Exercice )
+    - [ ] Attributs
+      - [ ] AdminCoutCentre (Exercice)
+      - [ ] AdminCharge (Exercice)
+    - [ ] Fonctions
+      - [ ] getCoutGenerale()
+      -> adminCharge.getCharges() , faire la somme des montants
+      - [ ] getCout
