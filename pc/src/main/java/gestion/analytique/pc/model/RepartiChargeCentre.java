@@ -12,26 +12,31 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "repartition_charge_centre")
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "charge_finale")
-public class ChargeFinale {
+public class RepartiChargeCentre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_charge_finale;
+    private Integer id_repartition_charge_centre;
 
     @ManyToOne
-    @JoinColumn(name = "id_rubrique")
+    @JoinColumn(name = "id_centre", nullable = false)
+    private Centre centre;
+
+    @ManyToOne
+    @JoinColumn(name = "id_rubrique", nullable = false)
     private Rubrique rubrique;
 
-    private double total_montant;
+    private Double pourcentage;
 
     @Builder
-    public ChargeFinale(Rubrique rubrique, double total_montant) {
+    public RepartiChargeCentre(Centre centre, Rubrique rubrique, Double pourcentage) {
+        this.centre = centre;
         this.rubrique = rubrique;
-        this.total_montant = total_montant;
+        this.pourcentage = pourcentage;
     }
 }

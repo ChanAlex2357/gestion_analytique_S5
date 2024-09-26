@@ -3,6 +3,7 @@ package gestion.analytique.pc.service;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import gestion.analytique.pc.model.DetailCharge;
+import gestion.analytique.pc.model.Exercice;
 import gestion.analytique.pc.repository.DetailChargeRepository;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,10 @@ public class DetailChargeService {
 
     public Optional<DetailCharge> getById(int id) {
         return repository.findById(id);
+    }
+
+    public List<DetailCharge> getAllByExercice(Exercice exercice) {
+        return repository.findAllByExercice(exercice.getDate_debut(), exercice.getDate_fin());
     }
 
     public DetailCharge save(DetailCharge detailCharge) {

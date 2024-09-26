@@ -27,6 +27,10 @@ public class Centre {
     @JoinColumn(name = "id_type_centre", nullable = false)
     private TypeCentre typeCentre;
 
+    @ManyToOne
+    @JoinColumn(name = "id_unit_oeuvre", nullable = false)
+    private UnitOeuvre unitOeuvre;
+
     private String name;
 
     @Builder

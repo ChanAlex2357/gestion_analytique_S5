@@ -7,9 +7,9 @@
     - [ ] Liste type Centre - select
     - [ ] Liste Unit Oeuvre
 - [ ] Back
-  - [ ] Class UnitOeuvre
-  - [ ] Class TypeCentre
-  - [ ] Class Centre
+  - [x] Class UnitOeuvre
+  - [x] Class TypeCentre
+  - [x] Class Centre
 
 ## Insertion Rubrique
 
@@ -41,10 +41,10 @@
   - [ ] Class Charge ( Rubrique , montant , date_charge )
     - [ ] setDateCharge ( String ) - Validation du format de date
     - [ ] setMontant ( String ) - Montant > 0
-  - [ ] Class Cles ( pourcentage )
+  - [ ] Class Cles ( pourcentage ) class mais pas attribut
   - [ ] Class RepartionCharge ( Charge , Centre , Cles )
-    - [ ] fonction get_montant_par_cles() => Charge.montant * Cles.pourcentage
-  - [ ] Class AdminRepartionCharge
+    - [ ] fonction get_montant_par_cles() => Charge.montant * Cles.pourcentage 
+  - [ ] Class AdminRepartionCharge       
     - [ ] fonction get_repartition_charge_par_centre( Charge ) => RepartitionCharge []
         -> Donne la rerpartition de la charge sur tout les centres actuels
 - Integration
@@ -58,57 +58,58 @@
 ## Calcul de cout
 
 - [ ] Back
-  - [ ] Class utilitaire Exercice( date_debut , date_fin)
-  - [ ] Class ViewCoutCentre()
-    - [ ] Attributs
-      - [ ] Centre
-      - [ ] NatureCharge
-      - [ ] Montant
+  - [x] Class utilitaire Exercice( date_debut , date_fin)
+  - [x] Class ViewCoutCentre()
+    - [x] Attributs
+      - [x] Centre
+      - [x] NatureCharge
+      - [x] Montant
 
-  - [ ] Class View CoutCentre()
-    - [ ] Attributs
-      - [ ] Centre
-      - [ ] <Nature,Montant> , Montant par nature de charge
-      - [ ] Exercice
-      - [ ] coutTotal
-      - [ ] coutDirectTotal
-    - [ ] setCoutDirectTotal
+  - [x] Class CoutCentre()
+    - [x] Attributs
+      - [x] Centre
+      - [x] <Nature,Montant> , Montant par nature de charge
+      - [x] Exercice
+      - [x] coutTotal
+      - [x] coutDirectTotal
+    - [x] setCoutDirectTotal
     -> Somme de chaque montant de chaque nature
 
   - [ ] Class AdminCoutCentre ( Exercice )
     -> Recupere la liste des details charges dans l'exercice
-    -> Grouper par idCentre et le type charge
+    -> Grouper par idCentre et la nature
     -> Sommer les montants de chaque groupe , on obtient le montant par nature de chaque centre pour une ligne de donnee
     -> Instancier ViewCoutCentre
     -> Etablir la liste des CoutCentre en mettant la somme de chaque nature dans la map <Nature,Montant>
     -> Une fois la liste CoutCentre[] etablie , separer les Operationnelles et structurelles
 
-    - [ ] Attributs
-      - [ ] Exercice
-      - [ ] CoutCentre[]
-      - [ ] SommeOperationnelle
-      - [ ] SommeStructurelle
-      - [ ] SommeCoutTotal
+    - [x] Attributs
+      - [x] Exercice
+      - [x] CoutCentre[]
+      - [x] SommeOperationnelle
+      - [x] SommeStructurelle
+      - [x] SommeCoutTotal
 
     - [ ] Fonctions - Faire les calculs a partir de la liste des couts centres
       - [ ] getCentreOperationnelle()
 
       - [ ] getCoutDirectTotal( Centre )
+
       -> return CoutCentre.getCoutDirectTotal tels que CoutCentre.Centre == Centre
 
       - [ ] getCoutCentre(Centre)
       -> return CoutCentre tels que CoutCentre.Centre == Cnetre
 
-      - [ ] getSommeOperationnelle( ) -> Si l'attribut SommeOperationnelle n'est pas on retourne directement
+      - [ ] getSommeOperationnelle( ) -> Si l'attribut SommeOperationnelle n'est pas null on retourne directement
         -> Somme des coup direct de tous les centres de type operationnelle
         -> Stocker le resultat dans SommeOperationnelle
 
-      - [ ] getSommeStructurelle() -> Si l'attribut SommeStucturelle n'est pas on retourne directement
+      - [ ] getSommeStructurelle() -> Si l'attribut SommeStucturelle n'est pas null on retourne directement
         -> Somme des coup direct de tous les centres de type Stucturelle
         -> Stocker le resultat dans SommeStucturelle
 
-      - [ ] getClesCentreOperationnelle(Centre[])
-      ->  pour chaque centre de centre => getClesCentreOperationnelle(Centre)
+      - [ ] Cles[] getClesCentreOperationnelle(Centre[])
+      ->  pour chaque centre de centre[] => getClesCentreOperationnelle(Centre)
 
       - [ ] getClesCentreOperationnelle(Centre)
       -> Cles = getCoutDirectTotal(Centre) / getSommeOperationnelle()
@@ -126,7 +127,7 @@
       -> getCoutTotalCentreOperationnelle(centre)
       -> setSommeCoutTotal
 
-  - [ ] Class AdminCharge (Exercice)
+  - [ ] Class AdminCharge (Exercice) 
   -> getCharges(Exercice) -> Mettre la liste dans l'attribut
 
     - [ ] Attribut

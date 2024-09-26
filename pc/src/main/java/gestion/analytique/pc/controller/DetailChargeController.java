@@ -7,7 +7,7 @@ import gestion.analytique.pc.model.DetailCharge;
 import gestion.analytique.pc.model.Nature;
 import gestion.analytique.pc.model.Rubrique;
 import gestion.analytique.pc.model.Centre;
-import gestion.analytique.pc.model.ChargeFinale;
+import gestion.analytique.pc.model.Charge;
 import gestion.analytique.pc.model.CoutCentre;
 import gestion.analytique.pc.service.DetailChargeService;
 import gestion.analytique.pc.service.RubriqueService;
@@ -96,7 +96,7 @@ public class DetailChargeController {
         }
 
         // Insertion dans la table chargefinale
-        ChargeFinale chargeFinale = new ChargeFinale(idrubrique_used, sum_montant);
+        Charge chargeFinale = new Charge(idrubrique_used, sum_montant);
         chargeFinaleService.save(chargeFinale);
 
         return ResponseEntity.ok().build();

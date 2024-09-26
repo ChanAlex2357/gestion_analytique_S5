@@ -2,7 +2,7 @@ package gestion.analytique.pc.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import gestion.analytique.pc.model.ChargeFinale;
+import gestion.analytique.pc.model.Charge;
 import gestion.analytique.pc.repository.ChargeFinaleRepository;
 import java.util.List;
 import java.util.Optional;
@@ -16,15 +16,15 @@ public class ChargeFinaleService {
         this.repository = repository;
     }
 
-    public List<ChargeFinale> getAll() {
-        return (List<ChargeFinale>) repository.findAll();
+    public List<Charge> getAll() {
+        return (List<Charge>) repository.findAll();
     }
 
-    public Optional<ChargeFinale> getById(int id) {
+    public Optional<Charge> getById(int id) {
         return repository.findById(id);
     }
 
-    public ChargeFinale save(ChargeFinale chargeFinale) {
+    public Charge save(Charge chargeFinale) {
         return repository.save(chargeFinale);
     }
 
