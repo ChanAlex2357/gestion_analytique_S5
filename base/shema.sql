@@ -102,3 +102,17 @@ CREATE TABLE Charge(
    PRIMARY KEY(id_charge),
    FOREIGN KEY(id_charge_detail) REFERENCES Detail_charge(id_charge_detail)
 );
+
+CREATE VIEW v_cout_centre AS
+SELECT 
+    c.id_centre,
+    n.name AS nature_name,
+    dc.montant
+FROM 
+    Detail_charge dc
+JOIN 
+    Centre c ON dc.id_centre = c.id_centre
+JOIN 
+    Nature n ON dc.id_nature = n.id_nature
+GROUP BY 
+    c.id_centre, n.name;

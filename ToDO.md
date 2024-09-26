@@ -91,20 +91,19 @@
       - [x] SommeCoutTotal
 
     - [ ] Fonctions - Faire les calculs a partir de la liste des couts centres
-      - [ ] getCentreOperationnelle()
-
-      - [ ] getCoutDirectTotal( Centre )
+      - [x] getCentreOperationnelle()
+      - [x] getCoutDirectTotal( Centre )
 
       -> return CoutCentre.getCoutDirectTotal tels que CoutCentre.Centre == Centre
 
       - [ ] getCoutCentre(Centre)
       -> return CoutCentre tels que CoutCentre.Centre == Cnetre
 
-      - [ ] getSommeOperationnelle( ) -> Si l'attribut SommeOperationnelle n'est pas null on retourne directement
+      - [x] getSommeOperationnelle( ) -> Si l'attribut SommeOperationnelle n'est pas null on retourne directement
         -> Somme des coup direct de tous les centres de type operationnelle
         -> Stocker le resultat dans SommeOperationnelle
 
-      - [ ] getSommeStructurelle() -> Si l'attribut SommeStucturelle n'est pas null on retourne directement
+      - [x] getSommeStructurelle() -> Si l'attribut SommeStucturelle n'est pas null on retourne directement
         -> Somme des coup direct de tous les centres de type Stucturelle
         -> Stocker le resultat dans SommeStucturelle
 
