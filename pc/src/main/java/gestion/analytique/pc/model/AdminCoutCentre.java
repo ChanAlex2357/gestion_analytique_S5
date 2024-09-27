@@ -14,32 +14,6 @@ public class AdminCoutCentre {
     private double sommeStructurelle;
     private double sommeCoutTotal;
 
-    public double getSommeOperationnelle() {
-        if (sommeOperationnelle != 0.0) {
-            return sommeOperationnelle;
-        }    
-        sommeOperationnelle = coutCentres.entrySet().stream()
-            .filter(entry -> entry.getKey().getName().equalsIgnoreCase("Opérationnelle"))
-            .flatMap(entry -> entry.getValue().stream()) 
-            .mapToDouble(CoutCentre::getCoutDirectTotal)
-            .sum();
-    
-        return sommeOperationnelle;
-    }
-
-    public double getSommeStructurelle() {
-        if (sommeStructurelle != 0.0) {
-            return sommeStructurelle;
-        }
-        sommeStructurelle = coutCentres.entrySet().stream()
-            .filter(entry -> entry.getKey().getName().equalsIgnoreCase("Structurelle"))
-            .flatMap(entry -> entry.getValue().stream()) 
-            .mapToDouble(CoutCentre::getCoutDirectTotal)
-            .sum();
-    
-        return sommeStructurelle;
-    }
-
     // Constructor
     @Builder
     public AdminCoutCentre(Exercice exercice, HashMap<TypeCentre, List<CoutCentre>> coutCentres) {

@@ -12,11 +12,13 @@ public class CoutCentre {
     private Exercice exercice;
     private Double coutTotal;
     private Double coutDirectTotal;
+    private Double cles;
 
     @Builder
     public CoutCentre(Centre centre, Exercice exercice) {
         this.centre = centre;
         this.exercice = exercice;
+        this.coutTotal = 0.0;
         this.natureMontant = new HashMap<>();
     }
 

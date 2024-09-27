@@ -107,20 +107,20 @@
         -> Somme des coup direct de tous les centres de type Stucturelle
         -> Stocker le resultat dans SommeStucturelle
 
-      - [ ] Cles[] getClesCentreOperationnelle(Centre[])
+      - [x] Cles[] getClesCentreOperationnelle(Centre[])
       ->  pour chaque centre de centre[] => getClesCentreOperationnelle(Centre)
 
-      - [ ] getClesCentreOperationnelle(Centre)
+      - [x] getClesCentreOperationnelle(Centre)
       -> Cles = getCoutDirectTotal(Centre) / getSommeOperationnelle()
       -> La cle de repartition du structurelle pour le centre operationnelle
 
-      - [ ] getCoutTotalCentreOperationnelle(Centre)
+      - [x] getCoutTotalCentreOperationnelle(Centre)
       -> coutcentre = getCoutCentre(Centre)
       ->  return coutCentre.getCoutTotal Si la valeur est != 0
       -> Sinon coutTotal = getCoutDirectTotal(Centre) + ( getClesCentreOperationnelle(Centre) * getSommeStructurelle() )
       -> coucentre.setCoutTotal(coutTotal)
 
-      - [ ] getSommeCoutTotal()
+      - [x] getSommeCoutTotal()
       -> Si SommeCoutTotal return it
       -> Pour chaque centre de getCentreOperationnelle()
       -> getCoutTotalCentreOperationnelle(centre)
