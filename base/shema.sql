@@ -1,11 +1,11 @@
 CREATE TABLE UnitOeuvre(
-   id_unit_oeuvre DOUBLE PRECISION,
+   id_unit_oeuvre SERIAL,
    name VARCHAR(50)  NOT NULL,
    PRIMARY KEY(id_unit_oeuvre)
 );
 
 CREATE TABLE Nature(
-   id_nature INTEGER,
+   id_nature SERIAL,
    name VARCHAR(50)  NOT NULL,
    PRIMARY KEY(id_nature)
 );
@@ -43,11 +43,11 @@ CREATE TABLE TypeCentreProduction(
 );
 
 CREATE TABLE Rubrique(
-   id_rubrique INTEGER,
+   id_rubrique SERIAL,
    Name VARCHAR(50) ,
    Id_TypeCharge INTEGER NOT NULL,
    id_nature INTEGER NOT NULL,
-   id_unit_oeuvre DOUBLE PRECISION NOT NULL,
+   id_unit_oeuvre INTEGER NOT NULL,
    PRIMARY KEY(id_rubrique),
    FOREIGN KEY(Id_TypeCharge) REFERENCES TypeCharge(Id_TypeCharge),
    FOREIGN KEY(id_nature) REFERENCES Nature(id_nature),
@@ -55,17 +55,17 @@ CREATE TABLE Rubrique(
 );
 
 CREATE TABLE Centre(
-   id_centre INTEGER,
+   id_centre SERIAL,
    name VARCHAR(50)  NOT NULL,
    id_type_centre INTEGER NOT NULL,
-   id_unit_oeuvre DOUBLE PRECISION NOT NULL,
+   id_unit_oeuvre INTEGER NOT NULL,
    PRIMARY KEY(id_centre),
    FOREIGN KEY(id_type_centre) REFERENCES Type_Centre(id_type_centre),
    FOREIGN KEY(id_unit_oeuvre) REFERENCES UnitOeuvre(id_unit_oeuvre)
 );
 
 CREATE TABLE Charge(
-   id_charge INTEGER,
+   id_charge SERIAL,
    total_montant NUMERIC(15,2)  ,
    date_charge DATE NOT NULL,
    id_rubrique INTEGER NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE Detail_charge(
    id_nature INTEGER,
    id_centre INTEGER,
    id_charge INTEGER,
-   id_charge_detail INTEGER,
+   id_charge_detail SERIAL,
    montant NUMERIC(15,2)  ,
    cles_repartition VARCHAR(50) ,
    PRIMARY KEY(id_nature, id_centre, id_charge, id_charge_detail),
