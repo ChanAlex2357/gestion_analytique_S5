@@ -24,10 +24,10 @@
       - [ ] sinon Incorporable
         - [ ] Cles par centre - decimal
 - [ ] Back
-  - [ ] Class TypeCharge ( nom )
-  - [ ] Class Nature ( nom )
-  - [ ] Class Rubrique ( nom , Nature , TypeCharge )
-  - [ ] Class RepartiChargeCentre
+  - [x] Class TypeCharge ( nom )
+  - [x] Class Nature ( nom )
+  - [x] Class Rubrique ( nom , Nature , TypeCharge )
+  - [x] Class RepartiChargeCentre
 
 ## Insertion Charge
 
