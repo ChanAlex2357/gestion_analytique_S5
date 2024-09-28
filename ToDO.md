@@ -90,7 +90,7 @@
       - [x] SommeStructurelle
       - [x] SommeCoutTotal
 
-    - [ ] Fonctions - Faire les calculs a partir de la liste des couts centres
+    - [x] Fonctions - Faire les calculs a partir de la liste des couts centres
       - [x] getCentreOperationnelle()
       - [x] getCoutDirectTotal( Centre )
 
@@ -126,7 +126,7 @@
       -> getCoutTotalCentreOperationnelle(centre)
       -> setSommeCoutTotal
 
-  - [ ] Class AdminCharge (Exercice) 
+  - [ ] Class AdminCharge (Exercice)
   -> getCharges(Exercice) -> Mettre la liste dans l'attribut
 
     - [ ] Attribut
