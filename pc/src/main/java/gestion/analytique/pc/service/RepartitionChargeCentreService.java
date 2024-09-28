@@ -33,4 +33,5 @@ public class RepartitionChargeCentreService {
     public void delete(int id) {
         repository.deleteById(id);
     }
+
 }

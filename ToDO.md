@@ -37,15 +37,15 @@
     - [ ] Montant - numeric
     - [ ] Date Charge - date
 - [ ] Back
-  - [ ] Class DetailCharge ( Charge , TypeCharge , Centre , Cles , Montant , DateCharge)
-  - [ ] Class Charge ( Rubrique , montant , date_charge )
-    - [ ] setDateCharge ( String ) - Validation du format de date
-    - [ ] setMontant ( String ) - Montant > 0
-  - [ ] Class Cles ( pourcentage ) class mais pas attribut
-  - [ ] Class RepartionCharge ( Charge , Centre , Cles )
-    - [ ] fonction get_montant_par_cles() => Charge.montant * Cles.pourcentage 
-  - [ ] Class AdminRepartionCharge       
-    - [ ] fonction get_repartition_charge_par_centre( Charge ) => RepartitionCharge []
+  - [x] Class DetailCharge ( Charge , TypeCharge , Centre , Cles , Montant , DateCharge)
+  - [x] Class Charge ( Rubrique , montant , date_charge )
+    - [x] setDateCharge ( String ) - Validation du format de date
+    - [x] setMontant ( String ) - Montant > 0
+  - [x] Class Cles ( pourcentage ) class mais pas attribut
+  - [x] Class RepartionCharge ( Charge , Centre , Cles )
+    - [] fonction get_montant_par_cles() => Charge.montant * pourcentage  
+  - [x] Class AdminRepartionCharge       
+    - [x] fonction get_repartition_charge_par_centre( Charge ) => RepartitionCharge []
         -> Donne la rerpartition de la charge sur tout les centres actuels
 - Integration
   - [ ] La liste des rubriques - Rubrique.getAll
