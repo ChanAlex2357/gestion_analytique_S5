@@ -33,7 +33,6 @@ CREATE TABLE Production(
 
 CREATE TABLE Type_Centre(
    id_type_centre SERIAL,
-   name VARCHAR(50),
    PRIMARY KEY(id_type_centre)
 );
 
@@ -65,12 +64,26 @@ CREATE TABLE Centre(
    FOREIGN KEY(id_unit_oeuvre) REFERENCES UnitOeuvre(id_unit_oeuvre)
 );
 
+CREATE TABLE Charge(
+   id_charge INTEGER,
+   total_montant NUMERIC(15,2)  ,
+   date_charge DATE NOT NULL,
+   id_rubrique INTEGER NOT NULL,
+   PRIMARY KEY(id_charge),
+   FOREIGN KEY(id_rubrique) REFERENCES Rubrique(id_rubrique)
+);
+
 CREATE TABLE Detail_charge(
+   id_nature INTEGER,
+   id_centre INTEGER,
+   id_charge INTEGER,
    id_charge_detail INTEGER,
    montant NUMERIC(15,2)  ,
-   id_centre INTEGER NOT NULL,
-   PRIMARY KEY(id_charge_detail),
-   FOREIGN KEY(id_centre) REFERENCES Centre(id_centre)
+   cles_repartition VARCHAR(50) ,
+   PRIMARY KEY(id_nature, id_centre, id_charge, id_charge_detail),
+   FOREIGN KEY(id_nature) REFERENCES Nature(id_nature),
+   FOREIGN KEY(id_centre) REFERENCES Centre(id_centre),
+   FOREIGN KEY(id_charge) REFERENCES Charge(id_charge)
 );
 
 CREATE TABLE CentreProduction(
@@ -94,14 +107,6 @@ CREATE TABLE Repartition_charge_centre(
    FOREIGN KEY(id_rubrique) REFERENCES Rubrique(id_rubrique)
 );
 
-CREATE TABLE Charge(
-   id_charge INTEGER,
-   total_montant NUMERIC(15,2)  ,
-   date_charge DATE NOT NULL,
-   id_charge_detail INTEGER NOT NULL,
-   PRIMARY KEY(id_charge),
-   FOREIGN KEY(id_charge_detail) REFERENCES Detail_charge(id_charge_detail)
-);
 
 CREATE VIEW v_cout_centre AS
 SELECT 
