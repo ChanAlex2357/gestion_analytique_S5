@@ -24,6 +24,7 @@ public class AdminCoutCentreService {
                 .build();
         adminCoutCentre.setSommeOperationnelle(getSommeOperationnelle());
         adminCoutCentre.setSommeStructurelle(getSommeStructurelle());
+        
         return adminCoutCentre;
     }
 
@@ -65,7 +66,7 @@ public class AdminCoutCentreService {
     public List<CoutCentre> getCoutCentresStructurelle() {
         return getCoutCentresByType("Structurelle");
     }
-
+    // Genere les cles pour les centres operationnelles
     private void setClesOperationnelle(List<CoutCentre> operationnelle) {
         double sommeOperationnelle = adminCoutCentre.getSommeOperationnelle();
         operationnelle.forEach(coutCentre -> coutCentre.setCles(coutCentre.getCoutDirectTotal() / sommeOperationnelle));
@@ -89,4 +90,5 @@ public class AdminCoutCentreService {
     private double calculateSum(List<CoutCentre> centres, ToDoubleFunction<CoutCentre> extractor) {
         return centres.stream().mapToDouble(extractor).sum();
     }
+
 }

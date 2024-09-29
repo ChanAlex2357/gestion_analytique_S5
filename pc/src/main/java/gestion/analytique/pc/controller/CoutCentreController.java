@@ -3,7 +3,7 @@ package gestion.analytique.pc.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import gestion.analytique.pc.model.CoutCentre;
+import gestion.analytique.pc.model.ViewCoutCentre;
 import gestion.analytique.pc.service.CoutCentreService;
 
 import java.util.List;
@@ -19,14 +19,8 @@ public class CoutCentreController {
     }
 
     @GetMapping
-    public List<CoutCentre> getAll() {
+    public List<ViewCoutCentre> getAll() {
         return service.getAll();
-    }
-
-    @PostMapping
-    public ResponseEntity<CoutCentre> create(@RequestBody CoutCentre coutCentre) {
-        CoutCentre savedCoutCentre = service.save(coutCentre);
-        return ResponseEntity.ok(savedCoutCentre);
     }
 
     @DeleteMapping("/{id}")

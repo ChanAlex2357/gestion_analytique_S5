@@ -9,6 +9,12 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class ViewCoutCentre {
+
+    // Add a synthetic ID for JPA purposes
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;  // Auto-generated ID for JPA to use as primary key
+
     @ManyToOne
     @JoinColumn(name = "id_centre", nullable = false)
     private Centre centre;

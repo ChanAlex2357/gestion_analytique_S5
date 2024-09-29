@@ -114,7 +114,7 @@ CREATE VIEW v_cout_centre AS
 SELECT 
     c.id_centre,
     n.name AS nature_name,
-    dc.montant
+    SUM(dc.montant) AS montant
 FROM 
     Detail_charge dc
 JOIN 
