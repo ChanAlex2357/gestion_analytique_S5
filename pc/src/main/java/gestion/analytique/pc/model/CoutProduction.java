@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CoutProduction {
     private Production          production;
-    private List<Centre>        centreProduction;
+    private List<CoutCentre>    coutCentres;
     private Double              sommeProductionCentre;
     private Double              coutDeRevient;
 
