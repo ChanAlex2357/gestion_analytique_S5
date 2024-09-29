@@ -36,7 +36,7 @@
     - [ ] Liste des rubrique - select
     - [ ] Montant - numeric
     - [ ] Date Charge - date
-- [ ] Back
+- [x] Back
   - [x] Class DetailCharge ( Charge , TypeCharge , Centre , Cles , Montant , DateCharge)
   - [x] Class Charge ( Rubrique , montant , date_charge )
     - [x] setDateCharge ( String ) - Validation du format de date

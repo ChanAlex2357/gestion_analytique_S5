@@ -35,7 +35,7 @@ public class Rubrique {
     private Nature nature; 
 
     @ManyToOne
-    @JoinColumn(name = "id_type_charge")
+    @JoinColumn(name = "id_typecharge")
     private TypeCharge type_charge; 
 
     // Constructor with Builder

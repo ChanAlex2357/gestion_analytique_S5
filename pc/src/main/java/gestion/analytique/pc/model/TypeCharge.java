@@ -14,12 +14,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "type_charge")
+@Table(name = "typecharge")
 public class TypeCharge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_type_charge;
+    private Integer id_typecharge;
 
     private String name;
 

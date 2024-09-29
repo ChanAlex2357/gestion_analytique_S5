@@ -3,10 +3,8 @@ package gestion.analytique.pc.service;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import gestion.analytique.pc.model.Centre;
 import gestion.analytique.pc.model.CentreProduction;
 import gestion.analytique.pc.model.CentreProductionMere;
-import gestion.analytique.pc.model.CentreProduction;
 import gestion.analytique.pc.model.Produit;
 import gestion.analytique.pc.repository.CentreProductionRepository;
 import lombok.Data;

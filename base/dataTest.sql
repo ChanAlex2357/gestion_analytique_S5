@@ -12,6 +12,10 @@ INSERT INTO TypeCharge (name) VALUES
 ('Incorporable'),
 ('Suppletive');
 
+INSERT INTO Type_Centre (name) VALUES 
+('Operationnel'),
+('Structurel');
+
 INSERT INTO Produit (name) VALUES 
 ('Product X'),
 ('Product Y');
@@ -53,3 +57,4 @@ INSERT INTO CentreProduction (id_type_centre_production, Id_Produit, id_centre) 
 INSERT INTO Repartition_charge_centre (id_centre, id_rubrique, pourcentage) VALUES 
 (1, 1, 50.00), -- En supposant que id_centre 1 existe, id_rubrique 1 existe
 (2, 2, 75.25); -- En supposant que id_centre 2 existe, id_rubrique 2 existe
+

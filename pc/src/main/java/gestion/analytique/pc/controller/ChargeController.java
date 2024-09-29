@@ -8,6 +8,7 @@ import gestion.analytique.pc.model.DetailCharge;
 import gestion.analytique.pc.model.RepartitionChargeCentre;
 import gestion.analytique.pc.service.ChargeService;
 import gestion.analytique.pc.service.DetailChargeService;
+import gestion.analytique.pc.service.RubriqueService;
 
 import java.util.List;
 
@@ -16,11 +17,15 @@ import java.util.List;
 public class ChargeController {
 
     private final ChargeService service;
-    private DetailChargeService dc_service;
+    private final DetailChargeService dc_service; // Change this to final
+    private final RubriqueService n_service; // Change this to final
 
+    // Use constructor injection for both services
     @Autowired
-    public ChargeController(ChargeService service) {
+    public ChargeController(ChargeService service, DetailChargeService dc_service, RubriqueService n_service) {
         this.service = service;
+        this.dc_service = dc_service; // Initialize here
+        this.n_service = n_service;
     }
 
     @GetMapping
@@ -53,13 +58,14 @@ public class ChargeController {
             DetailCharge details = new DetailCharge();
             details.setCentre(repartitionChargeCentre.getCentre());
             details.setCharge(charge);
-            details.setCles_repartition(repartitionChargeCentre.getPourcentage()+"");
-            details.setDate_charge(charge.getDate_charge());
-            details.setMontant(charge.getTotal_montant() * repartitionChargeCentre.getPourcentage() /100 + ""); 
-            details.setNature(charge.getRubrique().getNature());
-            dc_service.save(details);
+            details.setCles_repartition(String.valueOf(repartitionChargeCentre.getPourcentage()));
+            double montant = charge.getTotal_montant() * repartitionChargeCentre.getPourcentage() / 100;
+            details.setMontant(String.valueOf(montant));
+            
+            details.setNature((this.n_service.getById(charge.getRubrique().getId_rubrique())).get().getNature());
+            dc_service.save(details); 
         }
 
-        return false;
+        return true;
     }
 }
