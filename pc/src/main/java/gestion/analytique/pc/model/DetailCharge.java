@@ -31,8 +31,6 @@ public class DetailCharge {
 
     private String cles_repartition;
 
-    private LocalDate date_charge;
-
     @ManyToOne
     @JoinColumn(name = "id_nature", nullable = false)
     private Nature nature;
@@ -46,22 +44,12 @@ public class DetailCharge {
     private Charge charge;
 
     @Builder
-    public DetailCharge(Double montant, String cles_repartition, Nature nature, Centre centre, Charge charge, LocalDate date_charge) {
+    public DetailCharge(Double montant, String cles_repartition, Nature nature, Centre centre, Charge charge) {
         this.montant = montant;
         this.cles_repartition = cles_repartition;
         this.nature = nature;
         this.centre = centre;
         this.charge = charge;
-        this.date_charge = date_charge;
-    }
-
-    public void setDateCharge(String dateString) throws IllegalArgumentException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        try {
-            this.date_charge = LocalDate.parse(dateString, formatter);
-        } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException("Invalid date format. Expected format: yyyy-MM-dd");
-        }
     }
 
     public void setMontant(String montantString) throws IllegalArgumentException {
