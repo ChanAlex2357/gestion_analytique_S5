@@ -14,11 +14,12 @@ import java.util.Optional;
 public class ChargeService {
 
     private final ChargeRepository repository;
-    private RepartitionChargeCentreService chargeCentreService;
+    private final RepartitionChargeCentreService chargeCentreService;
 
     @Autowired
-    public ChargeService(ChargeRepository repository) {
+    public ChargeService(ChargeRepository repository,RepartitionChargeCentreService chargeCentreService) {
         this.repository = repository;
+        this.chargeCentreService = chargeCentreService;
     }
 
     public List<Charge> getAll() {

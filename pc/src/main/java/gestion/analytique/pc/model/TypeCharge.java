@@ -19,7 +19,7 @@ public class TypeCharge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_type_charge;
+    private Integer id_type_charge;
 
     private String name;
 

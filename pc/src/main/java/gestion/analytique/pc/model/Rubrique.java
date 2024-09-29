@@ -22,7 +22,7 @@ public class Rubrique {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_rubrique;
+    private Integer id_rubrique;
 
     private String name; 
 

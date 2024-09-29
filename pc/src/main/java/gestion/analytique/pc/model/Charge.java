@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -24,7 +23,7 @@ public class Charge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_charge;
+    private Integer id_charge;
 
     private double total_montant;
 

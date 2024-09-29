@@ -19,7 +19,7 @@ public class TypeCentre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_type_centre;
+    private Integer id_type_centre;
 
     private String name;
 

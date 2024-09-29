@@ -25,7 +25,7 @@ public class DetailCharge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_charge_detail;
+    private Integer id_charge_detail;
 
     private Double montant;
 
