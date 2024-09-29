@@ -1,10 +1,5 @@
-# gestion_analytique_S5
+# Vue 3 + TypeScript + Vite
 
-Application web pour faire une analyse des charges d'une activites sur ces centres , en l'ocurrence ici l'activite est l'assemblage d'ordinateur a partir des composantes necessaires.
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-Le but principale de l'application est d'obtenir un dashbord avec les stats suivantes:
-- Cout par centre
-- Cout de revient
-- Seuille de rentabilite
-
-  **Rappel :** Cout == Prix d'achat
+Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
