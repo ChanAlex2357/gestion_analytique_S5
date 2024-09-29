@@ -14,18 +14,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "unit_oeuvre") 
+@Table(name = "unitoeuvre") 
 public class UnitOeuvre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int unit_oeuvre;
+    private Integer id_unit_oeuvre;
 
     private String name;
 
     // Constructor 
     @Builder
     public UnitOeuvre(int unit_oeuvre, String name) {
-        this.unit_oeuvre = unit_oeuvre;
+        this.id_unit_oeuvre = unit_oeuvre;
         this.name = name;
     }
 }

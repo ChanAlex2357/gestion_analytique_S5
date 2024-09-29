@@ -21,7 +21,7 @@ public class Centre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_centre;
+    private Integer id_centre;
 
     @ManyToOne
     @JoinColumn(name = "id_type_centre", nullable = false)

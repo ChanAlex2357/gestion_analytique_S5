@@ -20,7 +20,7 @@ public class Nature {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_nature;
+    private Integer id_nature;
 
     private String name ;
 

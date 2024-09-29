@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PcApplication<pc>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "gestion.analytique.pc.PcApplication",
+            "projectName": "pc",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

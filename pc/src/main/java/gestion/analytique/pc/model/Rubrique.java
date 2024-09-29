@@ -22,7 +22,7 @@ public class Rubrique {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_rubrique;
+    private Integer id_rubrique;
 
     private String name; 
 
@@ -34,11 +34,16 @@ public class Rubrique {
     @JoinColumn(name = "id_nature")
     private Nature nature; 
 
+    @ManyToOne
+    @JoinColumn(name = "id_type_charge")
+    private TypeCharge type_charge; 
+
     // Constructor with Builder
     @Builder
-    public Rubrique(String name, UnitOeuvre unitOeuvre, Nature nature) {
+    public Rubrique(String name, UnitOeuvre unitOeuvre, Nature nature,TypeCharge type_charge) {
         this.name = name;
         this.unitOeuvre = unitOeuvre;
         this.nature = nature;
+        this.type_charge = type_charge;
     }
 }

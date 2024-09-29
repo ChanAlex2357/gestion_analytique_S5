@@ -1,9 +1,9 @@
 package gestion.analytique.pc.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,17 +14,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "type_centre")
-public class TypeCentre {
+@Table(name = "type_charge")
+public class TypeCharge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_type_centre;
+    private Integer id_type_charge;
 
     private String name;
 
     @Builder
-    public TypeCentre(String name) {
+    public TypeCharge(String name) {
         this.name = name;
     }
 }

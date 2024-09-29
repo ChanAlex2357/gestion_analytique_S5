@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class RepartiChargeCentre {
+public class RepartitionChargeCentre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class RepartiChargeCentre {
     private Double pourcentage;
 
     @Builder
-    public RepartiChargeCentre(Centre centre, Rubrique rubrique, Double pourcentage) {
+    public RepartitionChargeCentre(Centre centre, Rubrique rubrique, Double pourcentage) {
         this.centre = centre;
         this.rubrique = rubrique;
         this.pourcentage = pourcentage;
