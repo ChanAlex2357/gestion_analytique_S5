@@ -2,7 +2,10 @@ package gestion.analytique.pc.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import gestion.analytique.pc.model.Centre;
 import gestion.analytique.pc.model.CentreProductionId;
+import gestion.analytique.pc.model.Produit;
 import gestion.analytique.pc.repository.CentreProductionRepository;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +18,9 @@ public class CentreProductionService {
     public CentreProductionService(CentreProductionRepository repository) {
         this.repository = repository;
     }
-
+    public List<Centre> getCentresByProduit(Produit produit) {
+        return repository.findCentresByProduit(produit);
+    }
     public List<CentreProductionId> getAll() {
         return (List<CentreProductionId>) repository.findAll();
     }

@@ -17,4 +17,6 @@ public class Produit {
     private int idProduit;
 
     private String name;
+
+    
 }
