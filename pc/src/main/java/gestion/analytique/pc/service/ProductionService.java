@@ -5,8 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import gestion.analytique.pc.model.Exercice;
 import gestion.analytique.pc.model.Production;
+import gestion.analytique.pc.model.ProductionMere;
+import gestion.analytique.pc.model.Produit;
 import gestion.analytique.pc.repository.ProductionRepository;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -33,8 +39,51 @@ public class ProductionService {
     public void delete(int id) {
         repository.deleteById(id);
     }
-
-    public List<Production> getProductions( Exercice exercice ){
-        return repository.findProductionByExercice(exercice.getDate_debut(),exercice.getDate_fin());
+    public List<Production> getAllByExercice(Exercice exercice){
+        return repository.findAllByExercice(exercice.getDate_debut(), exercice.getDate_fin());
     }
+
+    public List<ProductionMere> getProductionMere(Exercice exercice) {
+        // Step 1: Retrieve all production records
+        List<Production> allProductions = getAllByExercice(exercice);
+
+        // Step 2: Initialize a map to group productions by Produit
+        HashMap<Produit, List<Production>> productionMap = new HashMap<>();
+
+        // Step 3: Iterate through the list of productions
+        for (Production production : allProductions) {
+            Produit produit = production.getProduit(); // Assuming Production has a getProduit() method
+
+            // Step 4: Group productions by Produit
+            productionMap.computeIfAbsent(produit, k -> new ArrayList<>()).add(production);
+        }
+
+        // Step 5: Create a list of ProductionMere objects
+        List<ProductionMere> productionMereList = new ArrayList<>();
+
+        // Step 6: Iterate over the map entries and create ProductionMere objects
+        for (Map.Entry<Produit, List<Production>> entry : productionMap.entrySet()) {
+            Produit produit = entry.getKey();
+            List<Production> productionsForProduit = entry.getValue();
+
+            // Calculate the total production for this Produit
+            double totalProduction = productionsForProduit.stream()
+                .mapToDouble(Production::getQuantite) // Assuming Production has a getQuantite() method
+                .sum();
+
+            // Step 7: Create a new ProductionMere object
+            ProductionMere productionMere = new ProductionMere();
+            productionMere.setExercice(exercice);
+            productionMere.setProduit(produit);
+            productionMere.setProductions(productionsForProduit);
+            productionMere.setTotalProduction(totalProduction);
+
+            // Add the ProductionMere object to the list
+            productionMereList.add(productionMere);
+        }
+
+        // Step 8: Return the list of ProductionMere objects
+        return productionMereList;
+    }
+
 }

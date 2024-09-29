@@ -1,6 +1,8 @@
 package gestion.analytique.pc.service;
 
 import gestion.analytique.pc.model.*;
+import lombok.Data;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +11,16 @@ import java.util.List;
 import java.util.function.ToDoubleFunction;
 
 @Service
+@Data
 public class AdminCoutCentreService {
 
     @Autowired
     private CoutCentreService coutCentreService;
     private AdminCoutCentre adminCoutCentre;
 
+    public AdminCoutCentreService(Exercice exercice){
+        setAdminCoutCentre(createAdminCoutCentres(exercice));   
+    }
     public AdminCoutCentre createAdminCoutCentres(Exercice exercice) {
         List<ViewCoutCentre> viewCentres = coutCentreService.getAllByExercice(exercice);
         HashMap<TypeCentre, List<CoutCentre>> coutCentres = coutCentreService.getCoutCentres(viewCentres, exercice);

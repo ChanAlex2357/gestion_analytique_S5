@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class CoutProduction {
-    private Production          production;
+    private ProductionMere          production;
     private List<CoutCentre>    coutCentres;
     private Double              sommeProductionCentre;
     private Double              coutDeRevient;
 
     @Builder
-    public CoutProduction(Production production){
+    public CoutProduction(ProductionMere production){
         setProduction(production);
     }
 }

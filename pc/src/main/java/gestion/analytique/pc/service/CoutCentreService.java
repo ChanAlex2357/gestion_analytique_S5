@@ -19,11 +19,15 @@ import java.util.Optional;
 public class CoutCentreService {
     @Autowired
     private final CoutCentreRepository repository;
-
+    
     public CoutCentreService(CoutCentreRepository repository) {
         this.repository = repository;
     }
 
+    public HashMap<TypeCentre, List<CoutCentre>> getCoutCentres(Exercice exercice){
+        List<ViewCoutCentre> viewCoutCentres = getAllByExercice(exercice);
+        return getCoutCentres(viewCoutCentres, exercice);
+    }
     public HashMap<TypeCentre, List<CoutCentre>> getCoutCentres(List<ViewCoutCentre> viewCoutCentres, Exercice exercice) {
         HashMap<TypeCentre, List<CoutCentre>> coutCentresMap = new HashMap<>();
         HashMap<Centre, CoutCentre> centreCoutCentreMap = new HashMap<>();
@@ -45,6 +49,39 @@ public class CoutCentreService {
         }
         return coutCentresMap;
     }
+    public List<CoutCentre> getAllCoutCentres(Exercice exercice){
+        HashMap<TypeCentre, List<CoutCentre>> coutCentresMap = getCoutCentres(exercice);
+        // Step 2: Initialize an empty list to store all CoutCentre objects
+        List<CoutCentre> allCoutCentres = new ArrayList<>();
+
+        // Step 3: Iterate over each entry in the map and combine the lists
+        for (List<CoutCentre> coutCentres : coutCentresMap.values()) {
+            // Add all elements from each list to the combined list
+            allCoutCentres.addAll(coutCentres);
+        }
+
+        // Step 4: Return the combined list of all CoutCentre
+        return allCoutCentres;
+    }
+    public CoutCentre getCoutCentreByCentre(Centre centre, List<CoutCentre> allCoutCentres) {
+        
+        // Step 2: Iterate through the list and find the matching CoutCentre for the given Centre
+        for (CoutCentre coutCentre : allCoutCentres) {
+            if (coutCentre.getCentre().equals(centre)) {
+                // Step 3: Return the matching CoutCentre
+                return coutCentre;
+            }
+        }
+    
+        // Step 4: If no matching CoutCentre is found, return null or throw an exception
+        return null;
+    }
+    public CoutCentre getCoutCentreByCentre(Centre centre, Exercice exercice) {
+        // Step 1: Get the combined list of all CoutCentre objects for the given exercice
+        List<CoutCentre> allCoutCentres = getAllCoutCentres(exercice);
+        return getCoutCentreByCentre(centre, allCoutCentres);
+    }
+    
     private void setCoutTotal(CoutCentre coutCentre) {
         // WHY VIDE
     }

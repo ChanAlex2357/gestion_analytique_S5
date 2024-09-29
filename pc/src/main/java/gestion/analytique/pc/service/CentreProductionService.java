@@ -11,6 +11,7 @@ import gestion.analytique.pc.model.Produit;
 import gestion.analytique.pc.repository.CentreProductionRepository;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -18,25 +19,27 @@ import java.util.Optional;
 @Service
 @Data
 public class CentreProductionService {
-    private final CentreProductionRepository repository;
     @Autowired
-    public CentreProductionService(CentreProductionRepository repository) {
-        this.repository = repository;
-    }
+    private final CentreProductionRepository repository;
+    
     public List<CentreProduction> getAll() {
         return (List<CentreProduction>) repository.findAll();
     }
-    public CentreProductionMere instantiateCentreProductionMere() {
+    public CentreProductionMere getCentreProductionMere() {
         List<CentreProduction> centreProductions = getAll();
 
         // Initialize the HashMap
-        HashMap<Produit, CentreProduction> centreProduitMap = new HashMap<>();
+        HashMap<Produit, List<CentreProduction>> centreProduitMap = new HashMap<>();
 
         // Populate the HashMap from the List<CentreProduction>
         for (CentreProduction cp : centreProductions) {
-            centreProduitMap.put(cp.getProduit() , cp);
-        }
+        Produit produit = cp.getProduit(); // Extract the Produit from the CentreProduction
 
+        // Step 4: Add the CentreProduction to the corresponding list in the HashMap
+        centreProduitMap
+            .computeIfAbsent(produit, k -> new ArrayList<>()) // If no list exists for this Produit, create a new one
+            .add(cp); // Add the current CentreProduction to the list
+    }
         // Create a new CentreProductionMere object and set the map
         CentreProductionMere centreProductionMere = new CentreProductionMere();
         centreProductionMere.setCentreProduit(centreProduitMap);
