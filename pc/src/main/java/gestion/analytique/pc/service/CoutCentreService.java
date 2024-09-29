@@ -46,7 +46,7 @@ public class CoutCentreService {
         return coutCentresMap;
     }
     private void setCoutTotal(CoutCentre coutCentre) {
-        
+        // WHY VIDE
     }
 
     public List<ViewCoutCentre> getAllByExercice(Exercice exercice) {

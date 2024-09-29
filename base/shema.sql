@@ -33,8 +33,10 @@ CREATE TABLE Production(
 
 CREATE TABLE Type_Centre(
    id_type_centre SERIAL,
+   name VARCHAR(50)  NOT NULL,
    PRIMARY KEY(id_type_centre)
 );
+
 
 CREATE TABLE TypeCentreProduction(
    id_type_centre_production SERIAL,
