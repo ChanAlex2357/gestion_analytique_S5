@@ -20,18 +20,20 @@ public class AdminCoutCentreService {
     @Autowired
     public AdminCoutCentreService(CoutCentreService coutCentreService){
         this.coutCentreService = coutCentreService;
-        this.adminCoutCentre = createAdminCoutCentres(null);   
+        this.adminCoutCentre = createAdminCoutCentres(null); 
     }
     public AdminCoutCentre createAdminCoutCentres(Exercice exercice) {
-        List<ViewCoutCentre> viewCentres = coutCentreService.getAllByExercice(exercice);
-        HashMap<TypeCentre, List<CoutCentre>> coutCentres = coutCentreService.getCoutCentres(viewCentres, exercice);
-        adminCoutCentre = AdminCoutCentre.builder()
-                .exercice(exercice)
-                .coutCentres(coutCentres)
-                .build();
+        adminCoutCentre = coutCentreService.getAllCoutCentres(exercice);
         adminCoutCentre.setSommeOperationnelle(getSommeOperationnelle());
+        System.err.println("SSSSSSSSSSSSSSS");
         adminCoutCentre.setSommeStructurelle(getSommeStructurelle());
-        
+
+        List<CoutCentre> operationnelles = getCoutCentresOperationnelle();
+        setClesOperationnelle(operationnelles);
+        for (CoutCentre coutCentre : operationnelles) {
+            setCoutTotalCentre(coutCentre);
+        }
+        adminCoutCentre.setSommeCoutTotal( getSommeCoutTotal(operationnelles));
         return adminCoutCentre;
     }
 
@@ -43,9 +45,9 @@ public class AdminCoutCentreService {
     }
 
     public double getSommeOperationnelle() {
-        if (adminCoutCentre.getSommeOperationnelle() != 0.0) {
-            return adminCoutCentre.getSommeOperationnelle();
-        }
+        // if (adminCoutCentre.getSommeOperationnelle() != 0.0) {
+        //     return adminCoutCentre.getSommeOperationnelle();
+        // }
         double sommeOperationnelle = getCoutCentresOperationnelle().stream()
                 .mapToDouble(CoutCentre::getCoutDirectTotal)
                 .sum();
@@ -55,9 +57,9 @@ public class AdminCoutCentreService {
     }
 
     public double getSommeStructurelle() {
-        if (adminCoutCentre.getSommeStructurelle() != 0.0) {
-            return adminCoutCentre.getSommeStructurelle();
-        }
+        // if (adminCoutCentre.getSommeStructurelle() != 0.0) {
+        //     return adminCoutCentre.getSommeStructurelle();
+        // }
         double sommeStructurelle = getCoutCentresStructurelle().stream()
                 .mapToDouble(CoutCentre::getCoutDirectTotal)
                 .sum();

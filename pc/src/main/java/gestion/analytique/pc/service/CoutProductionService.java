@@ -33,7 +33,7 @@ public class CoutProductionService {
     List<ProductionMere> productionMere = getProductionService().getProductionMere(exercice);
 
     // Step 2: Fetch the map of coutCentres by TypeCentre for the given exercice
-    List<CoutCentre> coutCentresMap = getCoutCentreService().getAllCoutCentres(getExercice());
+    List<CoutCentre> coutCentresMap = getCoutCentreService().getAllCoutCentres(getExercice()).getAllCoutCentres();
 
     // Step 3: Fetch CentreProductionMere which holds the mapping between Produit and CentreProductions
     CentreProductionMere centreProductionMere = getCentreProductionService().getCentreProductionMere();
