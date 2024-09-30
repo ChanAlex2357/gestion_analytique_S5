@@ -108,7 +108,7 @@ export default {
     // This method fetches the list of natures and populates the natures array
     async fetchNatures() {
       try {
-        const response = await fetch('http://localhost:8080/api/nature');
+        const response = await fetch('http://localhost:8080/api/nature/list');
         if (!response.ok) {
           throw new Error('Failed to fetch natures');
         }
