@@ -1,34 +1,27 @@
+
 <script>
-
-//exemple de donnée azo
-  export default {
-    data() {
-      return {
-        centre :[
-        {Id_centre:1, nom:'assemblage'},
-        {Id_centre:2  , nom:'reparation'},
-        {Id_centre:3  , nom:'Admin/Distr'} 
-        ]
-
-      }
-    }
+export default {
+  props: ['id'], // Les params sont accessibles comme des props
+  mounted() {
+    console.log('ID from params:', this.id); // Vous pouvez aussi accéder à l'id ici
+  }
 }
 </script>
 
 <template>
     <div>
-      <h1>insert centre</h1>
+      <h1>Edit  _charges</h1>
     </div>
 
 
 
     <div class="pagetitle">
-      <h1> Centre </h1>
+      <h1 > Charge  {{ id }} </h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item">prototype</li>
-          <li class="breadcrumb-item active">centre</li>
+          <li class="breadcrumb-item active">charge</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -39,26 +32,47 @@
 
           <div class="card"><!--//////////-->
             <div class="card-body"> <!-- ///////////////  -->
-              <h5 class="card-title"> ajouter ou modifier un centre</h5> <!--////////////////////////////////Creat or Eddit////////////////////////////////////////////////////-->
+              <h5 class="card-title"> modifier </h5> <!--////////////////////////////////Creat or Eddit////////////////////////////////////////////////////-->
 
               <!-- General Form Elements -->
               <form>
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Nom</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" > <!--id="Name"-->
+                    <input type="text" class="form-control"><!--id="name"-->
                   </div>
                 </div>
+                
+                
 
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Type Centre</label>
+                  <label class="col-sm-2 col-form-label">Rubrique</label>
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" > <!--id="id_TypeCentre"-->
+                    <select class="form-select" aria-label="Default select example" > <!--  id=""id_Rubrique-->
                    <!-- //////////////////////////////   for   /////////////////////////////////////////// boucle for-->
-                      <!-- --><option   v-for="(centre,index) in centre" :key="index" value="{{centre.Id_centre}}" > <!-- --> {{ centre.nom }} </option><!-- -->
+                      <!-- --><option value="1"> <!-- --> One</option><!-- -->
                       <!-- --><option value="2"><!-- -->Two</option><!-- -->
                       <!-- --><option value="3"><!-- -->Three</option><!-- -->
                     </select>
+                  </div>
+                  
+                 
+                </div>
+
+                <div class="row mb-3">
+                          <label for="inputNumber" class="col-sm-2 col-form-label"> (Ar) </label> <!--when we need to get the value ex: if center 1 not checked( id = 0) wee don't need the value of Montant1-->
+
+                          <div class="col-sm-10">
+                            <input type="number" class="form-control" min="0">   <!-- ex:     id="Montant2--"-->
+                        </div>
+                    
+
+                  </div>
+
+                  <div class="row mb-3">
+                  <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control">
                   </div>
                 </div>
 
@@ -77,22 +91,7 @@
 
         </div>
 
-        <div class="col-lg-6">
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Centre</h5>
-              <p> ... </p>
-            </div>
-          </div>
-
-        </div>
+        
       </div>
     </section>
-
-
-
-
-
-
   </template>

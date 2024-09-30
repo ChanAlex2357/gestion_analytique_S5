@@ -41,9 +41,15 @@
                       <td>  gigaByte</td>
 
                       <!--//-->
-                      <td><a href="#"> <button type="button" class="btn btn-primary">edit</button> </a>
-                                        <button type="button" class="btn btn-danger"><div class="icon"> <i class="bi bi-x-lg"></i></div></button>
-                      </td>
+                      <td> 
+                      <!-- <router-link to="{path:'/Home', query: { id: 12  }}"> <button type="button" class="btn btn-primary">edit</button></router-link> -->
+                      <router-link :to="{ name: 'Home', params: { id: 12 } }">
+                        <button type="button" class="btn btn-primary " ><i class="bi bi-pencil-fill"></i></button>
+                      </router-link>
+
+                      <router-link to="/"><button type="button" class="btn btn-danger offset-1"><div class="icon"> <i class="bi bi-x-lg"></i></div></button> </router-link>
+                                 
+                    </td>
                     </tr>
                       <!--//-->
                       

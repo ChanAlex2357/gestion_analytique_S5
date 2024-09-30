@@ -16,9 +16,7 @@
 </script>
 
 <template>
-    <div>
-      <h1>insert centre</h1>
-    </div>
+
 
 
 
@@ -39,7 +37,7 @@
 
           <div class="card"><!--//////////-->
             <div class="card-body"> <!-- ///////////////  -->
-              <h5 class="card-title"> ajouter ou modifier un centre</h5> <!--////////////////////////////////Creat or Eddit////////////////////////////////////////////////////-->
+              <h5 class="card-title">  modifier un centre</h5> <!--////////////////////////////////Creat or Eddit////////////////////////////////////////////////////-->
 
               <!-- General Form Elements -->
               <form>

@@ -1,12 +1,14 @@
 <template>
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item"><!-- ////// -->
-        <a class="nav-link " href="index.html">
+      <router-link to="/Home"> <!--///////////////////////:-->
+            <li class="nav-item"><!-- ////// -->
+        <a class="nav-link " href="#">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
+        </router-link><!-- End Dashboard Nav -->
 
       <li class="nav-item"> <!-- ///////   -->
         <a class="nav-link collapsed" data-bs-target="#centre-nav" data-bs-toggle="collapse" href="#">
@@ -16,7 +18,7 @@
           <li>
             <router-link to="/Insert_centre">   <i class="bi bi-circle"></i> <span>insert</span>  </router-link>
             
-              
+            
           </li>
           <li>
             <router-link to="/List_centre">   <i class="bi bi-circle"></i> <span>List</span>  </router-link>

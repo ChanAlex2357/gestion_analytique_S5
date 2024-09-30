@@ -11,14 +11,26 @@ import List_charge from './views/List_charge.vue'
 import Insert_unite_oeuvre from './views/Insert_unite_oeuvre.vue'
 import List_unite_oeuvre from './views/List_unite_oeuvre.vue'
 import Exercice from './views/Exercice.vue'
+import Edit_rubrique from './views/Edit_rubrique.vue'
+import Edit_charge from './views/Edit_charge.vue'
+import Edit_centre from './views/Edit_centre.vue'
 
 
 
 const routes = [
   {
-    path: '/',
+
+    path: '/Home',
     name: 'Home',
-    component: Home
+    component: Home,
+    props: true, // Enable route params to be passed as props
+  },
+  {
+    path: '/',
+    
+    name: 'Home1',
+    component: Home,
+    props: true, // Enable route params to be passed as props
   },
   {
     path: '/Insert_centre',
@@ -69,7 +81,26 @@ const routes = [
     path: '/Exercice',
     name: 'Exercice',
     component: Exercice
+  },
+  {
+    path: '/Edit_rubrique/:id',
+    name: 'Edit_rubrique',
+    component: Edit_rubrique,
+    props: true
+  },
+  {
+    path: '/Edit_charge/:id',
+    name: 'Edit_charge',
+    component: Edit_charge,
+    props: true,
+  },
+  {
+    path: '/Edit_centre/:id',
+    name: 'Edit_centre',
+    component: Edit_centre,
+    props: true,
   }
+  
 ]
 
 export default createRouter({
