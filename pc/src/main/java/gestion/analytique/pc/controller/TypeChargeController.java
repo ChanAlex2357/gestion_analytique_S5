@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/type_charge")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TypeChargeController {
 
     private final TypeChargeService service;

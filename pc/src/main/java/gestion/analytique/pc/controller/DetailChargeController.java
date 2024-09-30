@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/detail-charge")
+@CrossOrigin(origins = "http://localhost:5173")
 public class DetailChargeController {
 
     private final DetailChargeService service;

@@ -9,7 +9,7 @@ import gestion.analytique.pc.service.TypeCentreService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/typecentre")
+@RequestMapping("/api/typecentre")
 public class TypeCentreController {
     private final TypeCentreService service;
 
@@ -18,12 +18,12 @@ public class TypeCentreController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<TypeCentre> getAll() {
         return service.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public ResponseEntity<TypeCentre> create(@RequestBody TypeCentre typeCentre) {
         TypeCentre savedTypeCentre = service.save(typeCentre);
         return ResponseEntity.ok(savedTypeCentre);
@@ -39,7 +39,7 @@ public class TypeCentreController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);
         return ResponseEntity.noContent().build();

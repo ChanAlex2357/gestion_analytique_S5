@@ -12,7 +12,12 @@ import Insert_unite_oeuvre from './views/Insert_unite_oeuvre.vue'
 import List_unite_oeuvre from './views/List_unite_oeuvre.vue'
 import Exercice from './views/Exercice.vue'
 import Edit_unite_oeuvre from './views/Edit_unite_oeuvre.vue'
-import Nature from './views/Nature.vue'
+// for the entity : Nature
+import Insertion_Nature from './views/Insert_nature.vue'
+import List_nature from './views/List_nature.vue'
+// for the entity : TypeCentre
+import Insertion_TypeCentre from './views/Insertion_TypeCentre.vue'
+import List_TypeCentre from './views/List_TypeCentre.vue'
 
 
 
@@ -78,9 +83,24 @@ const routes = [
     component: Edit_unite_oeuvre
   },
   {
-    path: '/Nature',
-    name: 'Nature',
-    component: Nature
+    path: '/Insertion_Nature',
+    name: 'Insertion_Nature',
+    component: Insertion_Nature
+  },
+  {
+    path: '/List_nature',
+    name: 'List_nature',
+    component: List_nature
+  },
+  {
+    path: '/Insertion_TypeCentre',
+    name: 'Insertion_TypeCentre',
+    component: Insertion_TypeCentre
+  },
+  {
+    path: '/List_TypeCentre',
+    name: 'List_TypeCentre',
+    component: List_TypeCentre
   }
 ]
 

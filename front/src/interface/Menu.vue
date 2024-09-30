@@ -24,6 +24,38 @@
       </li><!-- End unite_oeuvre Nav -->
 
       <li class="nav-item"> <!-- ///////   -->
+        <a class="nav-link collapsed" data-bs-target="#nature-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Nature</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="nature-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+                <router-link to="/Insertion_Nature" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Insertion </span>  </router-link>
+            </li>
+            
+            <li>
+                <router-link to="/List_nature" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Liste </span>  </router-link>
+            </li>
+          
+        </ul>
+      </li><!-- End nature Nav -->
+
+      <li class="nav-item"> <!-- ///////   -->
+        <a class="nav-link collapsed" data-bs-target="#typecentre-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Type de Centre</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="typecentre-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+                <router-link to="/Insertion_TypeCentre" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Insertion </span>  </router-link>
+            </li>
+            
+            <li>
+                <router-link to="/List_TypeCentre" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Liste </span>  </router-link>
+            </li>
+          
+        </ul>
+      </li><!-- End nature Nav -->
+
+      <li class="nav-item"> <!-- ///////   -->
         <a class="nav-link collapsed" data-bs-target="#centre-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Centre</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -56,21 +88,7 @@
 
       
 
-      <li class="nav-item"> <!-- ///////   -->
-        <a class="nav-link collapsed" data-bs-target="#nature-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Nature</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="nature-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-                <router-link to="/Insert_" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Insertion </span>  </router-link>
-            </li>
-            
-            <li>
-                <router-link to="/d" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Liste </span>  </router-link>
-            </li>
-          
-        </ul>
-      </li><!-- End nature Nav -->
+      
 
       <li class="nav-item"> <!-- ///////   -->
         <a class="nav-link collapsed" data-bs-target="#charge-nav" data-bs-toggle="collapse" href="#">
