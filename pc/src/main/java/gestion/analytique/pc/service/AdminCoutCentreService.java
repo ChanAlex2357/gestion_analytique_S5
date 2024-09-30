@@ -6,7 +6,6 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.function.ToDoubleFunction;
 
@@ -25,7 +24,6 @@ public class AdminCoutCentreService {
     public AdminCoutCentre createAdminCoutCentres(Exercice exercice) {
         adminCoutCentre = coutCentreService.getAllCoutCentres(exercice);
         adminCoutCentre.setSommeOperationnelle(getSommeOperationnelle());
-        System.err.println("SSSSSSSSSSSSSSS");
         adminCoutCentre.setSommeStructurelle(getSommeStructurelle());
 
         List<CoutCentre> operationnelles = getCoutCentresOperationnelle();
@@ -69,11 +67,11 @@ public class AdminCoutCentreService {
     }
 
     public List<CoutCentre> getCoutCentresOperationnelle() {
-        return getCoutCentresByType("Opérationnelle");
+        return getCoutCentresByType("Operationnel");
     }
 
     public List<CoutCentre> getCoutCentresStructurelle() {
-        return getCoutCentresByType("Structurelle");
+        return getCoutCentresByType("Structurel");
     }
     // Genere les cles pour les centres operationnelles
     public void setClesOperationnelle(List<CoutCentre> operationnelle) {
