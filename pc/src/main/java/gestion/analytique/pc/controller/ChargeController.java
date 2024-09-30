@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/charge")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ChargeController {
 
     private final ChargeService service;

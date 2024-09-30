@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/coutcentre")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CoutCentreController {
     private final CoutCentreService service;
     private final AdminCoutCentreService coutCentreService;

@@ -9,7 +9,8 @@ import gestion.analytique.pc.service.NatureService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/nature")
+@RequestMapping("/api/nature")
+@CrossOrigin(origins = "http://localhost:5173")
 public class NatureController {
     private final NatureService service;
 
@@ -18,12 +19,12 @@ public class NatureController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<Nature> getAll() {
         return service.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public ResponseEntity<Nature> create(@RequestBody Nature nature) {
         Nature savedNature = service.save(nature);
         return ResponseEntity.ok(savedNature);
@@ -39,7 +40,7 @@ public class NatureController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
