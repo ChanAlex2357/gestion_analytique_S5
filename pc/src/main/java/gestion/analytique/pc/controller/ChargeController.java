@@ -39,7 +39,15 @@ public class ChargeController {
         Charge savedCharge = service.save(charge);
         return ResponseEntity.ok(savedCharge);
     }
-
+    @PutMapping("/{id}")
+    public ResponseEntity<Charge> update(@PathVariable int id, @RequestBody Charge charge) {
+        if (!service.getById(id).isPresent()) {
+            return ResponseEntity.notFound().build(); // Return 404 if not found
+        }
+        charge.setId_charge(id); // Ensure the ID is set to the correct entity
+        Charge updatedCharge = service.save(charge);
+        return ResponseEntity.ok(updatedCharge); // Return the updated entity
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);

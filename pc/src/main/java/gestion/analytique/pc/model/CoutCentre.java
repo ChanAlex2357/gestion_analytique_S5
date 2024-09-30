@@ -20,6 +20,7 @@ public class CoutCentre {
         this.exercice = exercice;
         this.coutTotal = 0.0;
         this.natureMontant = new HashMap<>();
+        this.cles = 0.0;
     }
 
     public void setCoutDirectTotal() {

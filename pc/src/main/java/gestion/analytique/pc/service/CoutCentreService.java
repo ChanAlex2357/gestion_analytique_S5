@@ -3,6 +3,7 @@ package gestion.analytique.pc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import gestion.analytique.pc.model.AdminCoutCentre;
 import gestion.analytique.pc.model.Centre;
 import gestion.analytique.pc.model.CoutCentre;
 import gestion.analytique.pc.model.Exercice;
@@ -50,7 +51,7 @@ public class CoutCentreService {
         }
         return coutCentresMap;
     }
-    public List<CoutCentre> getAllCoutCentres(Exercice exercice){
+    public AdminCoutCentre getAllCoutCentres(AdminCoutCentre adminCoutCentre,Exercice exercice){
         HashMap<TypeCentre, List<CoutCentre>> coutCentresMap = getCoutCentres(exercice);
         // Step 2: Initialize an empty list to store all CoutCentre objects
         List<CoutCentre> allCoutCentres = new ArrayList<>();
@@ -62,7 +63,23 @@ public class CoutCentreService {
         }
 
         // Step 4: Return the combined list of all CoutCentre
-        return allCoutCentres;
+        if (adminCoutCentre == null) {
+            adminCoutCentre = AdminCoutCentre.builder()
+            .exercice(exercice)
+            .allCoutCentres(allCoutCentres)
+            .coutCentres(coutCentresMap)
+            .build();
+        }
+        else {
+            adminCoutCentre.setExercice(exercice);
+            adminCoutCentre.setAllCoutCentres(allCoutCentres);
+            adminCoutCentre.setCoutCentres(coutCentresMap);
+        }
+        
+        return adminCoutCentre;
+    }
+    public AdminCoutCentre getAllCoutCentres(Exercice exercice){
+        return getAllCoutCentres(null, exercice);
     }
     public CoutCentre getCoutCentreByCentre(Centre centre, List<CoutCentre> allCoutCentres) {
         
@@ -79,7 +96,7 @@ public class CoutCentreService {
     }
     public CoutCentre getCoutCentreByCentre(Centre centre, Exercice exercice) {
         // Step 1: Get the combined list of all CoutCentre objects for the given exercice
-        List<CoutCentre> allCoutCentres = getAllCoutCentres(exercice);
+        List<CoutCentre> allCoutCentres = getAllCoutCentres(exercice).getAllCoutCentres();
         return getCoutCentreByCentre(centre, allCoutCentres);
     }
     
