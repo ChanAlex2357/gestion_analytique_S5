@@ -30,6 +30,16 @@ public class TypeChargeController {
         return ResponseEntity.ok(savedTypeCharge);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<TypeCharge> update(@PathVariable int id, @RequestBody TypeCharge typeCharge) {
+        TypeCharge updatedTypeCharge = service.update(id, typeCharge);
+        if (updatedTypeCharge != null) {
+            return ResponseEntity.ok(updatedTypeCharge);
+        } else {
+            return ResponseEntity.notFound().build(); // Retourne 404 si l'élément n'existe pas
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);

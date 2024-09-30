@@ -36,10 +36,29 @@ public class ProductionService {
         return repository.save(production);
     }
 
+    public Production update(int id, Production updatedProduction) {
+        Optional<Production> existingProductionOpt = getById(id);
+
+        if (existingProductionOpt.isPresent()) {
+            Production existingProduction = existingProductionOpt.get();
+            // Mettre à jour les champs nécessaires
+            existingProduction.setQuantite(updatedProduction.getQuantite());
+            existingProduction.setDateProduction(updatedProduction.getDateProduction());
+            existingProduction.setProduit(updatedProduction.getProduit());
+            // Mettez à jour d'autres champs si nécessaire
+
+            return repository.save(existingProduction); // Sauvegarder la mise à jour
+        } else {
+            // Vous pouvez choisir de gérer l'absence de l'élément avec une exception ou un retour spécifique
+            return null;
+        }
+    }
+
     public void delete(int id) {
         repository.deleteById(id);
     }
-    public List<Production> getAllByExercice(Exercice exercice){
+
+    public List<Production> getAllByExercice(Exercice exercice) {
         // return repository.findAllByExercice(exercice.getDate_debut(), exercice.getDate_fin());
         return getAll();
     }
@@ -69,8 +88,8 @@ public class ProductionService {
 
             // Calculate the total production for this Produit
             double totalProduction = productionsForProduit.stream()
-                .mapToDouble(Production::getQuantite) // Assuming Production has a getQuantite() method
-                .sum();
+                    .mapToDouble(Production::getQuantite) // Assuming Production has a getQuantite() method
+                    .sum();
 
             // Step 7: Create a new ProductionMere object
             ProductionMere productionMere = new ProductionMere();
@@ -86,5 +105,4 @@ public class ProductionService {
         // Step 8: Return the list of ProductionMere objects
         return productionMereList;
     }
-
 }

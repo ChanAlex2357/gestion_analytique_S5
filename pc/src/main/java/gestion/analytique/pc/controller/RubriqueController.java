@@ -9,7 +9,7 @@ import gestion.analytique.pc.service.RubriqueService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rubrique")
+@RequestMapping("/api/rubrique")
 public class RubriqueController {
     private final RubriqueService service;
 
@@ -18,12 +18,12 @@ public class RubriqueController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<Rubrique> getAll() {
         return service.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public ResponseEntity<Rubrique> create(@RequestBody Rubrique rubrique) {
         Rubrique savedRubrique = service.save(rubrique);
         return ResponseEntity.ok(savedRubrique);

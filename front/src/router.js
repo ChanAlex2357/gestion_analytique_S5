@@ -12,6 +12,7 @@ import Insert_unite_oeuvre from './views/Insert_unite_oeuvre.vue'
 import List_unite_oeuvre from './views/List_unite_oeuvre.vue'
 import Exercice from './views/Exercice.vue'
 import Edit_unite_oeuvre from './views/Edit_unite_oeuvre.vue'
+import Nature from './views/Nature.vue'
 
 
 
@@ -75,6 +76,11 @@ const routes = [
     path:'/Edit_uniteoeuvre/:id_unit_oeuvre',
     name: 'Edit_uniteoeuvre',
     component: Edit_unite_oeuvre
+  },
+  {
+    path: '/Nature',
+    name: 'Nature',
+    component: Nature
   }
 ]
 

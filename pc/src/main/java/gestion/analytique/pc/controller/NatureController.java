@@ -29,6 +29,16 @@ public class NatureController {
         return ResponseEntity.ok(savedNature);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Nature> update(@PathVariable int id, @RequestBody Nature nature) {
+        Nature updatedNature = service.update(id, nature);
+        if (updatedNature != null) {
+            return ResponseEntity.ok(updatedNature);
+        } else {
+            return ResponseEntity.notFound().build(); // Cas où l'entité n'existe pas
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);

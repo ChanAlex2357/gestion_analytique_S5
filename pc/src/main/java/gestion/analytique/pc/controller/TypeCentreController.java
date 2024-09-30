@@ -29,6 +29,16 @@ public class TypeCentreController {
         return ResponseEntity.ok(savedTypeCentre);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<TypeCentre> update(@PathVariable int id, @RequestBody TypeCentre typeCentre) {
+        TypeCentre updatedTypeCentre = service.update(id, typeCentre);
+        if (updatedTypeCentre != null) {
+            return ResponseEntity.ok(updatedTypeCentre);
+        } else {
+            return ResponseEntity.notFound().build(); // Retourne un 404 si l'entité n'existe pas
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);

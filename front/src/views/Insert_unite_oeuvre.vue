@@ -29,6 +29,7 @@
                   <label class="col-sm-2 col-form-label"></label>
                   <button type="submit" class="btn btn-primary col-4 offset-2">valider</button>
                 </div>
+                
               </form><!-- End General Form Elements -->
             </div>
           </div>

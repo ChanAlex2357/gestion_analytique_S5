@@ -26,11 +26,25 @@ public class TypeChargeService {
         return repository.findById(id);
     }
 
-    public TypeCharge save(TypeCharge unit) {
-        return repository.save(unit);
+    public TypeCharge save(TypeCharge typeCharge) {
+        return repository.save(typeCharge);
     }
 
     public void delete(int id) {
         repository.deleteById(id);
+    }
+
+    public TypeCharge update(int id, TypeCharge updatedTypeCharge) {
+        // Vérifier si l'élément existe
+        Optional<TypeCharge> existingTypeCharge = repository.findById(id);
+        if (existingTypeCharge.isPresent()) {
+            TypeCharge typeCharge = existingTypeCharge.get();
+            // Mettez à jour les champs nécessaires ici
+            typeCharge.setName(updatedTypeCharge.getName()); // Exemple de mise à jour
+            // Ajoutez d'autres mises à jour de champs si nécessaire
+
+            return repository.save(typeCharge); // Enregistrez et renvoyez l'élément mis à jour
+        }
+        return null; // Retourne null si l'élément n'existe pas
     }
 }
