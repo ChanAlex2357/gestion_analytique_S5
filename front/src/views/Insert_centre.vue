@@ -28,8 +28,8 @@
                 <div class="row mb-3">
                   <label for="typeCentre" class="col-sm-2 col-form-label">Type de Centre</label>
                   <div class="col-sm-10">
-                    <select v-model="centre.id_type_centre" id="typeCentre" class="form-select" required>
-                      <option v-for="type in typeCentres" :key="type.id_type_centre" :value="type.id_type_centre">{{ type.name }}</option>
+                    <select v-model="centre.typeCentre" id="typeCentre" class="form-select" required>
+                      <option v-for="type in typeCentres" :key="type.id_type_centre" :value="type">{{ type.name }}</option>
                     </select>
                   </div>
                 </div>
@@ -37,8 +37,8 @@
                 <div class="row mb-3">
                   <label for="unitOeuvre" class="col-sm-2 col-form-label">Unité d'Oeuvre</label>
                   <div class="col-sm-10">
-                    <select v-model="centre.id_unit_oeuvre" id="unitOeuvre" class="form-select" required>
-                      <option v-for="unit in unitsOeuvre" :key="unit.id_unit_oeuvre" :value="unit.id_unit_oeuvre">{{ unit.name }}</option>
+                    <select v-model="centre.unitOeuvre" id="unitOeuvre" class="form-select" required>
+                      <option v-for="unit in unitsOeuvre" :key="unit.id_unit_oeuvre" :value="unit">{{ unit.name }}</option>
                     </select>
                   </div>
                 </div>
@@ -81,8 +81,8 @@ export default {
     return {
       centre: {
         name: '',
-        id_type_centre: null, // Will store the selected TypeCentre ID
-        id_unit_oeuvre: null, // Will store the selected UnitOeuvre ID
+        typeCentre: null, // Will store the selected TypeCentre ID
+        unitOeuvre: null, // Will store the selected UnitOeuvre ID
       },
       typeCentres: [], // Array to hold TypeCentre options
       unitsOeuvre: [], // Array to hold UnitOeuvre options
@@ -118,7 +118,7 @@ export default {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(this.centre), // Send entire centre object
+          body: JSON.stringify( {name : this.centre.name ,typeCentre : this.centre.typeCentre , unitOeuvre : this.centre.unitOeuvre }), // Send entire centre object
         });
 
         if (!response.ok) {

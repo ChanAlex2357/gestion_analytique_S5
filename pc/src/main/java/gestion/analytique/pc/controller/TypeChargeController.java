@@ -9,7 +9,7 @@ import gestion.analytique.pc.service.TypeChargeService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/type_charge")
+@RequestMapping("/api/typecharge")
 @CrossOrigin(origins = "http://localhost:5173")
 public class TypeChargeController {
 
@@ -20,12 +20,12 @@ public class TypeChargeController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<TypeCharge> getAll() {
         return service.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public ResponseEntity<TypeCharge> create(@RequestBody TypeCharge typeCharge) {
         TypeCharge savedTypeCharge = service.save(typeCharge);
         return ResponseEntity.ok(savedTypeCharge);

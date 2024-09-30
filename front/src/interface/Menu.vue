@@ -2,7 +2,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item"><!-- ////// -->
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="/">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -50,6 +50,22 @@
             
             <li>
                 <router-link to="/List_TypeCentre" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Liste </span>  </router-link>
+            </li>
+          
+        </ul>
+      </li><!-- End nature Nav -->
+
+      <li class="nav-item"> <!-- ///////   -->
+        <a class="nav-link collapsed" data-bs-target="#typecharge-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Type de Charge</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="typecharge-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+                <router-link to="/Insert_typecharge" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Insertion </span>  </router-link>
+            </li>
+            
+            <li>
+                <router-link to="/List_typecharge" style="text-decoration: none;">   <i class="bi bi-circle"></i> <span> Liste </span>  </router-link>
             </li>
           
         </ul>

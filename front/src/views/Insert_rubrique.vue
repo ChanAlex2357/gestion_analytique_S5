@@ -29,9 +29,9 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Unité d'œuvre</label>
                 <div class="col-sm-10">
-                  <select v-model="rubrique.unitOeuvreId" class="form-select" required>
+                  <select v-model="rubrique.unitOeuvre" class="form-select" required>
                     <option value="" disabled selected>Choisir une unité d'œuvre</option>
-                    <option v-for="unit in unitsOeuvre" :key="unit.id" :value="unit.id">{{ unit.name }}</option>
+                    <option v-for="unit in unitsOeuvre" :key="unit.id" :value="unit">{{ unit.name }}</option>
                   </select>
                 </div>
               </div>
@@ -39,9 +39,19 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Nature</label>
                 <div class="col-sm-10">
-                  <select v-model="rubrique.natureId" class="form-select" required>
+                  <select v-model="rubrique.nature" class="form-select" required>
                     <option value="" disabled selected>Choisir une nature</option>
-                    <option v-for="nature in natures" :key="nature.id" :value="nature.id">{{ nature.name }}</option>
+                    <option v-for="nature in natures" :key="nature.id" :value="nature">{{ nature.name }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Type de charge</label>
+                <div class="col-sm-10">
+                  <select v-model="rubrique.type_charge" class="form-select" required>
+                    <option value="" disabled selected>Choisir le type de charge</option>
+                    <option v-for="typecharge in typecharges" :key="typecharge.id_typecharge" :value="typecharge">{{ typecharge.name }}</option>
                   </select>
                 </div>
               </div>
@@ -83,13 +93,15 @@ export default {
     return {
       rubrique: {
         name: '',
-        unitOeuvreId: null,
-        natureId: null,
+        unitOeuvre: null,
+        nature: null,
+        type_charge : null
       },
       modalTitle: '',
       modalMessage: '',
       unitsOeuvre: [], // To store unit d'œuvre data
-      natures: [] // To store nature data
+      natures: [], // To store nature data
+      typecharges : []
     };
   },
   methods: {
@@ -113,6 +125,19 @@ export default {
           throw new Error('Failed to fetch natures');
         }
         this.natures = await response.json();
+      } catch (error) {
+        console.error('Error fetching natures:', error);
+      }
+    },
+
+    // This method fetches the list of natures and populates the natures array
+    async fetchTypeCharge() {
+      try {
+        const response = await fetch('http://localhost:8080/api/typecharge/list');
+        if (!response.ok) {
+          throw new Error('Failed to fetch natures');
+        }
+        this.typecharges = await response.json();
       } catch (error) {
         console.error('Error fetching natures:', error);
       }
