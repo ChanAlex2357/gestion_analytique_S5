@@ -1,6 +1,7 @@
 package gestion.analytique.pc.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import gestion.analytique.pc.model.CentreProductionMere;
 import gestion.analytique.pc.model.CoutCentre;
 import gestion.analytique.pc.model.CoutProduction;
 import gestion.analytique.pc.model.Exercice;
+import gestion.analytique.pc.model.Nature;
 import gestion.analytique.pc.model.ProductionMere;
 import lombok.Data;
 
@@ -49,6 +51,7 @@ public class CoutProductionService {
 
         // Initialize the list to store the matching CoutCentre for this production
         List<CoutCentre> matchingCoutCentres = new ArrayList<>();
+        
 
         // Sum to calculate the total cost for this production
         double sommeProductionCentre = 0.0;
@@ -73,6 +76,7 @@ public class CoutProductionService {
         coutProduction.setCoutCentres(matchingCoutCentres);
         coutProduction.setSommeProductionCentre(sommeProductionCentre);
         coutProduction.setCoutDeRevient(coutDeRevient);
+        coutProduction.setMontantByNature();
 
         // Step 9: Add the CoutProduction object to the result list
         coutProductionList.add(coutProduction);
