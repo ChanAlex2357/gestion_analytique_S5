@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class AdminCoutCentre {
     private Exercice exercice;

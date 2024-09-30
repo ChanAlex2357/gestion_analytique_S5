@@ -40,7 +40,8 @@ public class ProductionService {
         repository.deleteById(id);
     }
     public List<Production> getAllByExercice(Exercice exercice){
-        return repository.findAllByExercice(exercice.getDate_debut(), exercice.getDate_fin());
+        // return repository.findAllByExercice(exercice.getDate_debut(), exercice.getDate_fin());
+        return getAll();
     }
 
     public List<ProductionMere> getProductionMere(Exercice exercice) {

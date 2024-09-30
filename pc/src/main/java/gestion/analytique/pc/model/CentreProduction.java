@@ -16,17 +16,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CentreProduction {
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "id_type_centre_production")
     private TypeCentreProduction typeCentreProduction;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "id_produit")
     private Produit produit;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "id_centre")
     private Centre centre;

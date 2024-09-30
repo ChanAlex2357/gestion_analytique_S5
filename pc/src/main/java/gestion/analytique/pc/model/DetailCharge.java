@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -39,13 +40,16 @@ public class DetailCharge {
     @JoinColumn(name = "id_charge", nullable = false)
     private Charge charge;
 
+    private LocalDate date_charge; 
+
     @Builder
-    public DetailCharge(Double montant, String cles_repartition, Nature nature, Centre centre, Charge charge) {
+    public DetailCharge(Double montant, String cles_repartition, Nature nature, Centre centre, Charge charge,LocalDate date_charge) {
         this.montant = montant;
         this.cles_repartition = cles_repartition;
         this.nature = nature;
         this.centre = centre;
         this.charge = charge;
+        this.date_charge = date_charge;
     }
 
     public void setMontant(String montantString) throws IllegalArgumentException {

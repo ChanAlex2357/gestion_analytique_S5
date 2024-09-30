@@ -80,6 +80,7 @@ CREATE TABLE Detail_charge(
    id_centre INTEGER,
    id_charge INTEGER,
    id_charge_detail SERIAL,
+   date_charge DATE NOT NULL,
    montant NUMERIC(15,2)  ,
    cles_repartition VARCHAR(50) ,
    PRIMARY KEY(id_nature, id_centre, id_charge, id_charge_detail),
@@ -109,17 +110,10 @@ CREATE TABLE Repartition_charge_centre(
    FOREIGN KEY(id_rubrique) REFERENCES Rubrique(id_rubrique)
 );
 
-
-CREATE VIEW v_cout_centre AS
-SELECT 
-    c.id_centre,
-    n.name AS nature_name,
-    SUM(dc.montant) AS montant
-FROM 
-    Detail_charge dc
-JOIN 
-    Centre c ON dc.id_centre = c.id_centre
-JOIN 
-    Nature n ON dc.id_nature = n.id_nature
-GROUP BY 
-    c.id_centre, n.name;
+CREATE TABLE Exercice (
+   id Serial ,
+   date_debut DATE ,
+   date_fin DATE ,
+   PRIMARY KEY (id)
+);
+CREATE  VIEW v_cout_centre AS SELECT c.id_centre as centre_id_centre ,n.id_nature as  nature_charge_id_nature,SUM(dc.montant) AS montant FROM Detail_charge AS dc JOIN Centre AS c ON dc.id_centre = c.id_centre JOIN Nature AS n ON dc.id_nature = n.id_nature GROUP BY c.id_centre, n.id_nature;

@@ -25,7 +25,7 @@ public class CoutCentreController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
-        service.delete(id);
+        // service.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

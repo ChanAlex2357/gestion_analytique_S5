@@ -61,7 +61,7 @@ public class ChargeController {
             details.setCles_repartition(String.valueOf(repartitionChargeCentre.getPourcentage()));
             double montant = charge.getTotal_montant() * repartitionChargeCentre.getPourcentage() / 100;
             details.setMontant(String.valueOf(montant));
-            
+            details.setDate_charge(charge.getDate_charge());
             details.setNature((this.n_service.getById(charge.getRubrique().getId_rubrique())).get().getNature());
             dc_service.save(details); 
         }

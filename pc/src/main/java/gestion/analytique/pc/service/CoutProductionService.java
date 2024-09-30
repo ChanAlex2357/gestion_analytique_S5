@@ -24,8 +24,8 @@ public class CoutProductionService {
     private CentreProductionService centreProductionService;
     private Exercice exercice;
 
-    public CoutProductionService (Exercice exercice){
-        setExercice(exercice);
+    public CoutProductionService (){
+        setExercice(null);
     ;
     }
     public List<CoutProduction> getCoutProduction() {

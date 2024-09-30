@@ -33,4 +33,17 @@ public class UnitOeuvreService {
     public void delete(int id) {
         repository.deleteById(id);
     }
+
+    // Method to update an existing UnitOeuvre
+    public UnitOeuvre update(int id, UnitOeuvre unitOeuvre) {
+        // Check if the unit exists
+        UnitOeuvre existingUnit = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Unit not found with id " + id));
+        
+        // Update the fields of the existing unit
+        existingUnit.setName(unitOeuvre.getName());
+        
+        // Save the updated unit back to the repository
+        return repository.save(existingUnit);
+    }
 }

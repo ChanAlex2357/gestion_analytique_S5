@@ -1,35 +1,31 @@
 package gestion.analytique.pc.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
-@Table(name = "v_cout_centre")
-@Getter
-@Setter
-@NoArgsConstructor
+@Table(name = "v_cout_centre") // Specify the table name if different from the class name
+@Data
 public class ViewCoutCentre {
 
-    // Add a synthetic ID for JPA purposes
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Auto-generated ID for JPA to use as primary key
+    @EmbeddedId
+    private ViewCoutCentreId id; // Composite key
 
+    // Optionally, you can define relationships if needed
     @ManyToOne
-    @JoinColumn(name = "id_centre", nullable = false)
+    @MapsId("id_centre") // Maps the composite key to the Centre entity
     private Centre centre;
 
     @ManyToOne
-    @JoinColumn(name = "id_nature", nullable = false)
+    @MapsId("id_nature") // Maps the composite key to the Nature entity
     private Nature natureCharge;
 
-    @Column(name = "montant")
     private Double montant;
 
-    @Builder
-    public ViewCoutCentre(Centre centre, Nature natureCharge, Double montant) {
-        this.centre = centre;
-        this.natureCharge = natureCharge;
-        this.montant = montant;
-    }
+    // Default constructor (required by JPA)
+    public ViewCoutCentre() {}
 }

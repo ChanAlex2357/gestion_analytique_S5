@@ -8,6 +8,7 @@ import gestion.analytique.pc.model.CoutCentre;
 import gestion.analytique.pc.model.Exercice;
 import gestion.analytique.pc.model.TypeCentre;
 import gestion.analytique.pc.model.ViewCoutCentre;
+import gestion.analytique.pc.model.ViewCoutCentreId;
 import gestion.analytique.pc.repository.CoutCentreRepository;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ import java.util.Optional;
 
 @Service
 public class CoutCentreService {
-    @Autowired
     private final CoutCentreRepository repository;
     
+    @Autowired
     public CoutCentreService(CoutCentreRepository repository) {
         this.repository = repository;
     }
@@ -87,14 +88,15 @@ public class CoutCentreService {
     }
 
     public List<ViewCoutCentre> getAllByExercice(Exercice exercice) {
-        return repository.findAllByExercice(exercice.getDate_debut(), exercice.getDate_fin());
+        // return repository.findAllByExercice(exercice.getDate_debut(), exercice.getDate_fin());
+        return getAll();
     }
 
     public List<ViewCoutCentre> getAll() {
         return (List<ViewCoutCentre>) repository.findAll();
     }
 
-    public Optional<ViewCoutCentre> getById(int id) {
+    public Optional<ViewCoutCentre> getById(ViewCoutCentreId id) {
         return repository.findById(id);
     }
 
@@ -102,7 +104,7 @@ public class CoutCentreService {
         return repository.save(coutCentre);
     }
 
-    public void delete(int id) {
+    public void delete(ViewCoutCentreId id) {
         repository.deleteById(id);
     }
 }

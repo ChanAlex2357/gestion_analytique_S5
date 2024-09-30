@@ -18,7 +18,7 @@ public class Production {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idProduction;
+    private Integer idProduction;
 
     private LocalDate dateProduction;
 

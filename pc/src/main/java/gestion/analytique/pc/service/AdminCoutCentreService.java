@@ -14,12 +14,13 @@ import java.util.function.ToDoubleFunction;
 @Data
 public class AdminCoutCentreService {
 
-    @Autowired
     private CoutCentreService coutCentreService;
     private AdminCoutCentre adminCoutCentre;
-
-    public AdminCoutCentreService(Exercice exercice){
-        setAdminCoutCentre(createAdminCoutCentres(exercice));   
+    
+    @Autowired
+    public AdminCoutCentreService(CoutCentreService coutCentreService){
+        this.coutCentreService = coutCentreService;
+        this.adminCoutCentre = createAdminCoutCentres(null);   
     }
     public AdminCoutCentre createAdminCoutCentres(Exercice exercice) {
         List<ViewCoutCentre> viewCentres = coutCentreService.getAllByExercice(exercice);

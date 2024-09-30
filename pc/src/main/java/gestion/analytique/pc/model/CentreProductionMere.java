@@ -3,7 +3,6 @@ package gestion.analytique.pc.model;
 import java.util.HashMap;
 import java.util.List;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

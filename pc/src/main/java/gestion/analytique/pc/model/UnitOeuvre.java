@@ -24,8 +24,8 @@ public class UnitOeuvre {
 
     // Constructor 
     @Builder
-    public UnitOeuvre(int unit_oeuvre, String name) {
-        this.id_unit_oeuvre = unit_oeuvre;
+    public UnitOeuvre(Integer unitOeuvre, String name) {
+        this.id_unit_oeuvre = unitOeuvre;
         this.name = name;
     }
 }

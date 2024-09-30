@@ -1,15 +1,14 @@
 package gestion.analytique.pc.repository;
-
-import java.time.LocalDate;
-import java.util.List;
-
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-
 import gestion.analytique.pc.model.ViewCoutCentre;
+import gestion.analytique.pc.model.ViewCoutCentreId;
 
-public interface CoutCentreRepository extends CrudRepository<ViewCoutCentre, Integer> {
-    @Query("SELECT dc FROM ViewCoutCentre dc WHERE dc.first_charge_date BETWEEN :start AND :end")
-    List<ViewCoutCentre> findAllByExercice(@Param("start") LocalDate start, @Param("end") LocalDate end);    
+public interface CoutCentreRepository extends CrudRepository<ViewCoutCentre, ViewCoutCentreId> {
+    // @Query("SELECT new gestion.analytique.pc.model.ViewCoutCentre(c, n, SUM(dc.montant)) " +
+    //        "FROM Detail_charge dc " +
+    //        "JOIN dc.centre c " +
+    //        "JOIN dc.nature n " +
+    //        "WHERE dc.date_charge BETWEEN :startDate AND :endDate " +
+    //        "GROUP BY c, n")
+    // List<ViewCoutCentre> findAllByExercice(@Psaram("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);    
 }
