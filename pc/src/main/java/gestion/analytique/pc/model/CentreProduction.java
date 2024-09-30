@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "centre_production")
+@Table(name = "centreproduction")
 @NoArgsConstructor
 public class CentreProduction {
 
@@ -30,5 +30,5 @@ public class CentreProduction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCentreProduction;
+    private int id_centre_production;
 }

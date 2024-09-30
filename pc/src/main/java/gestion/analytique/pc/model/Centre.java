@@ -30,4 +30,9 @@ public class Centre {
         this.typeCentre = typeCentre;
         this.unitOeuvre = unitOeuvre;
     }
+
+    @Override
+    public boolean equals(Object centre) {
+        return this.getId_centre().equals( ((Centre)centre).getId_centre() );
+    }
 }

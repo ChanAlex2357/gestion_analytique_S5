@@ -9,12 +9,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "type_centre_production")
+@Table(name = "typecentreproduction")
 public class TypeCentreProduction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTypeCentreProduction;
+    private int id_type_centre_production;
 
     private String designation;
 }

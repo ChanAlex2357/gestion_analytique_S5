@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import gestion.analytique.pc.model.AdminCoutProduction;
 import gestion.analytique.pc.model.CentreProduction;
 import gestion.analytique.pc.model.CentreProductionMere;
 import gestion.analytique.pc.model.CoutCentre;
@@ -17,23 +18,22 @@ import lombok.Data;
 @Service
 @Data
 public class CoutProductionService {
-    @Autowired
     private CoutCentreService coutCentreService;
-    @Autowired
     private ProductionService productionService;
     private CentreProductionService centreProductionService;
     private Exercice exercice;
-
-    public CoutProductionService (){
+    
+    @Autowired
+    public CoutProductionService (CoutCentreService coutCentreService,ProductionService productionService,CentreProductionService centreProductionService){
+        setCoutCentreService(coutCentreService);
+        setCentreProductionService(centreProductionService);
+        setProductionService(productionService);
         setExercice(null);
     ;
     }
-    public List<CoutProduction> getCoutProduction() {
+    public AdminCoutProduction getAdmCoutProductions( List<CoutCentre> coutCentresMap) {
     // Step 1: Fetch all productions
     List<ProductionMere> productionMere = getProductionService().getProductionMere(exercice);
-
-    // Step 2: Fetch the map of coutCentres by TypeCentre for the given exercice
-    List<CoutCentre> coutCentresMap = getCoutCentreService().getAllCoutCentres(getExercice()).getAllCoutCentres();
 
     // Step 3: Fetch CentreProductionMere which holds the mapping between Produit and CentreProductions
     CentreProductionMere centreProductionMere = getCentreProductionService().getCentreProductionMere();
@@ -79,7 +79,7 @@ public class CoutProductionService {
     }
 
     // Step 10: Return the list of CoutProduction
-    return coutProductionList;
+    return new AdminCoutProduction(coutProductionList);
 }
 
 }

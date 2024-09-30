@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class CoutProduction {
-    private ProductionMere          production;
+    private ProductionMere      production;
     private List<CoutCentre>    coutCentres;
     private Double              sommeProductionCentre;
     private Double              coutDeRevient;

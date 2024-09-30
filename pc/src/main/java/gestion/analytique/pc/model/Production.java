@@ -18,9 +18,10 @@ public class Production {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProduction;
+    private Integer id_production;
 
-    private LocalDate dateProduction;
+
+    private LocalDate date_production;
 
     private Double quantite;
 

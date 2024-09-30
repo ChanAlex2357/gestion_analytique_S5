@@ -43,7 +43,7 @@ public class ProductionService {
             Production existingProduction = existingProductionOpt.get();
             // Mettre à jour les champs nécessaires
             existingProduction.setQuantite(updatedProduction.getQuantite());
-            existingProduction.setDateProduction(updatedProduction.getDateProduction());
+            existingProduction.setDate_production(updatedProduction.getDate_production());
             existingProduction.setProduit(updatedProduction.getProduit());
             // Mettez à jour d'autres champs si nécessaire
 

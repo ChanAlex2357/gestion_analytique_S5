@@ -2,6 +2,8 @@ package gestion.analytique.pc.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import gestion.analytique.pc.model.AdminDetailCharge;
 import gestion.analytique.pc.model.DetailCharge;
 import gestion.analytique.pc.repository.DetailChargeRepository;
 
@@ -16,6 +18,11 @@ public class DetailChargeService {
     @Autowired
     public DetailChargeService(DetailChargeRepository repository) {
         this.repository = repository;
+    }
+
+    public AdminDetailCharge getAdminDetailCharge(){
+        AdminDetailCharge adminDetailCharge = new AdminDetailCharge(getAll());
+        return adminDetailCharge;
     }
 
     public List<DetailCharge> getAll() {
