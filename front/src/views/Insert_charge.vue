@@ -22,23 +22,25 @@
               <div class="row mb-3">
                 <label for="totalMontant" class="col-sm-2 col-form-label">Montant Total</label>
                 <div class="col-sm-10">
-                  <input type="number" v-model="charge.totalMontant" placeholder="Insérer le montant total" class="form-control" required>
+                  <input type="number" v-model="charge.total_montant" placeholder="Insérer le montant total"
+                    class="form-control" required>
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label for="dateCharge" class="col-sm-2 col-form-label">Date de Charge</label>
                 <div class="col-sm-10">
-                  <input type="date" v-model="charge.dateCharge" class="form-control" required>
+                  <input type="date" v-model="charge.date_charge" class="form-control" required>
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Rubrique</label>
                 <div class="col-sm-10">
-                  <select v-model="charge.rubriqueId" class="form-select" required>
+                  <select v-model="charge.rubrique" class="form-select" required>
                     <option value="" disabled selected>Choisir une rubrique</option>
-                    <option v-for="rubrique in rubriques" :key="rubrique.id_charge" :value="rubrique.id_charge">{{ rubrique.name }}</option>
+                    <option v-for="rubrique in rubriques" :key="rubrique.id_charge" :value="rubrique">{{
+                      rubrique.name }}</option>
                   </select>
                 </div>
               </div>
@@ -79,9 +81,9 @@ export default {
   data() {
     return {
       charge: {
-        totalMontant: null,
-        dateCharge: '',
-        rubriqueId: null,
+        total_montant: null,
+        date_charge: '',
+        rubrique: null,
       },
       modalTitle: '',
       modalMessage: '',
@@ -100,10 +102,10 @@ export default {
         console.error('Error fetching rubriques:', error);
       }
     },
-    
+
     async submitForm() {
       try {
-        const response = await fetch('http://localhost:8080/api/charge/insert', {
+        const response = await fetch('http://localhost:8080/api/charge/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -144,7 +146,7 @@ export default {
       modalElement.hide();
     },
   },
-  
+
   async mounted() {
     await this.fetchRubriques(); // Load rubriques on component mount
   }

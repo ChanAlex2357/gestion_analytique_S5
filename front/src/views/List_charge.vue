@@ -88,7 +88,8 @@ export default {
     // Fonction pour récupérer la liste des charges
     async fetchCharges() {
       try {
-        const response = await fetch('http://localhost:8080/api/charge/list');
+        
+        const response = await fetch('http://localhost:8080/api/charge/liste');
         if (!response.ok) {
           throw new Error('Erreur lors de la récupération des charges');
         }

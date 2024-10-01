@@ -13,7 +13,7 @@ import gestion.analytique.pc.service.RubriqueService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/charge")
+@RequestMapping("/api/charge")
 @CrossOrigin(origins = "http://localhost:5173")
 public class ChargeController {
 
@@ -29,12 +29,12 @@ public class ChargeController {
         this.n_service = n_service;
     }
 
-    @GetMapping
+    @GetMapping("/liste")
     public List<Charge> getAll() {
         return service.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public ResponseEntity<Charge> create(@RequestBody Charge charge) {
         Charge savedCharge = service.save(charge);
         return ResponseEntity.ok(savedCharge);

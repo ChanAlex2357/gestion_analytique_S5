@@ -95,13 +95,13 @@ export default {
         name: '',
         unitOeuvre: null,
         nature: null,
-        type_charge : null
+        type_charge: null // Ensure this matches the data property correctly
       },
       modalTitle: '',
       modalMessage: '',
       unitsOeuvre: [], // To store unit d'œuvre data
       natures: [], // To store nature data
-      typecharges : []
+      typecharges: [] // Correctly define this to hold type charges
     };
   },
   methods: {
@@ -117,7 +117,6 @@ export default {
       }
     },
     
-    // This method fetches the list of natures and populates the natures array
     async fetchNatures() {
       try {
         const response = await fetch('http://localhost:8080/api/nature/list');
@@ -130,16 +129,15 @@ export default {
       }
     },
 
-    // This method fetches the list of natures and populates the natures array
-    async fetchTypeCharge() {
+    async fetchTypeCharges() { // Correct the method name
       try {
         const response = await fetch('http://localhost:8080/api/typecharge/list');
         if (!response.ok) {
-          throw new Error('Failed to fetch natures');
+          throw new Error('Erreur lors de la récupération des types de charge');
         }
-        this.typecharges = await response.json();
+        this.typecharges = await response.json(); // Use this.typecharges here
       } catch (error) {
-        console.error('Error fetching natures:', error);
+        console.error('Détails de l\'erreur :', error);
       }
     },
     
@@ -150,7 +148,7 @@ export default {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(this.rubrique) // Send the rubrique object
+          body: JSON.stringify({name : this.rubrique.name , unitOeuvre : this.rubrique.unitOeuvre , nature : this.rubrique.nature, type_charge : this.rubrique.type_charge}) // Send the rubrique object
         });
 
         if (!response.ok) {
@@ -171,11 +169,11 @@ export default {
       }
     },
 
-    // Function to reset the form fields after successful submission
     resetForm() {
       this.rubrique.name = '';
-      this.rubrique.unitOeuvreId = null;
-      this.rubrique.natureId = null;
+      this.rubrique.unitOeuvre = null; // Use the correct property name
+      this.rubrique.nature = null; // Use the correct property name
+      this.rubrique.type_charge = null; // Reset type_charge as well
     },
 
     showModal() {
@@ -190,10 +188,11 @@ export default {
   },
   
   async mounted() {
-    await Promise.all([this.fetchUnitsOeuvre(), this.fetchNatures()]); // Load both units d'œuvre and natures on component mount
+    await Promise.all([this.fetchUnitsOeuvre(), this.fetchNatures(), this.fetchTypeCharges()]); // Load all data on mount
   }
 };
 </script>
+
 
 <style scoped>
 /* Add any additional styles here if needed */
